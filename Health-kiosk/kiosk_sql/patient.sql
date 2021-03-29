@@ -3,7 +3,7 @@ CREATE TABLE `patient` (
   `name` varchar(45) NOT NULL,
   `surname` varchar(45) NOT NULL,
   `dob` date NOT NULL,
-  `email` varchar(80) NOT NULL,
+  `email` varchar(120) NOT NULL,
   `password` varchar(14) NOT NULL,
   `address` varchar(100) NOT NULL,
   `city` varchar(45) NOT NULL,
