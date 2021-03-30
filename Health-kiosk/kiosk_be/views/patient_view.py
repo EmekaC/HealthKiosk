@@ -13,7 +13,12 @@ def getPats():
 @patients_view.route("/<id>",methods=["GET"])
 def getPatById(id):
     patient = getPatientById(id)
-    return  jsonify(patient)
+    
+    if patient== False:
+        return  jsonify("Invalid id format"),422
+    else:
+        return  jsonify(patient)
+    
 
 @patients_view.route("/create",methods=["POST"])
 def createPat():
@@ -33,7 +38,7 @@ def createPat():
     if status == True:
         return jsonify({'result': 'success'}),201
     else:
-        return jsonify({'result': status})
+        return jsonify({'result': status}),422
 
 
 @patients_view.route("/delete/<id>",methods=["DELETE"])
