@@ -1,35 +1,32 @@
 :root{
-    --primary: #fff; 
+    --primary: #1eb87f; 
+    --secondary: rgb(255, 255, 255);
 }
 
 .btn{
         padding: 8px 20px;
-        border-radius: 3px;
+        border-radius: 10px;
+        border: 3px solid;
 }
  
-.btn-primary{
-    background-color: var(--primary);
-    color: #bbb;
-    border: 1px solid var(--primary);
-}
 
 .btn-outline{
-    font-size: 60pt;
+    font-size: 40pt;
     background-color: #1eb87f;
     color: #fff;
     padding: 8px 20px;
-    border: 1px solid var(--primary);
+    border-color: var(--secondary);
     transition: all 0.3s ease-out;
-    margin-left: 10%;
-    
+    margin-left: 10%;  
     float:left;
 }
+
 .btn-login{
-    font-size: 60pt;
-    background-color: #1eb87f;
+    font-size: 40pt;
+    background-color: var(--primary);
     color: #fff;
     padding: 8px 20px;
-    border: 1px solid var(--primary);
+    border-color: var(--secondary);
     transition: all 0.3s ease-out;
     margin-right: 10%;
     position: right;
@@ -37,14 +34,42 @@
     
 }
 
+.btn-acc{
+    font-size: 40pt;
+    background-color: #1eb87f;
+    color: #fff;
+    padding: 80px 20px;
+    border: 1px solid var(--primary);
+    transition: all 0.3s ease-out;
+    margin-left: 10%;
+    position: left;
+    float: left;
+    
+}
+
 .btn-cancel{
-    background-color: transparent;
-    color: #e03e76;
+    font-size: 40pt;
+    background-color: #d3002d;
+    color: #fff;
     padding: 8px 20px;
     border: 1px solid var(--primary);
     transition: all 0.3s ease-out;
+
+  
+    border-color: var(--secondary);
+    transition: all 0.3s ease-out;
+    margin-left: 10%;
+    position: left;
+    float: left;
 }
 
+.btn-large:hover,
+.btn-medium:hover {
+  transition: all 0.3s ease-out;
+  background: gray;
+  color: black;
+  transition: 400ms;
+}
 
 
   
