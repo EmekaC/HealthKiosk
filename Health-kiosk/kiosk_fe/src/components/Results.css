@@ -1,0 +1,51 @@
+
+
+.center {
+    display: flex;
+    position: absolute;
+    width: 300px;
+    height: 620px;
+    left: 50%;
+    margin-top: -30px;
+    margin-left: -200px;
+    
+    
+    
+}
+
+.instructions{
+    float: left;
+    text-align: left;
+    display: table;
+    font-size: 30px;
+    margin-left: 5%;
+}
+
+.readings{
+    float: right;
+    text-align: right;
+    display: inline;
+    font-size: 30px;
+    margin-right: 10%;
+}
+
+
+
+#grid-line {
+    display: grid;
+    grid-template-columns: auto auto ;
+    grid-gap: 20px;
+}
+
+div.cell {
+    background: whitesmoke;
+    border: 3px solid #1eb87f;
+    border-radius: 10px;
+    padding: 10px 50px 70px 50px;
+    padding-bottom: 70px;
+    text-align: center;
+    
+}
+  
+
+

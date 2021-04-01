@@ -1,0 +1,64 @@
+.titlebar {
+    background: whitesmoke;
+    border: 5px solid gray;
+    padding: 5px 5px;
+
+    font-size: 50pt;
+    height: 140px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: static  ;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    
+    color: #1eb87f;
+    -webkit-text-stroke: 2px rgb(0, 0, 0);
+    
+}
+
+
+.footer {
+    background-color: whitesmoke;
+    border: 5px solid gray;
+    padding: 5px 5px;
+    min-height: 10px;
+    position: relative;
+    left: 0px;
+    top: 300px;
+    width: 100%;
+    overflow: hidden;
+
+}
+
+label{
+    font-size: 40px;
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 300px;
+    text-align: left;
+    
+}
+
+input {
+  display: inline-block;
+  width:700px;
+  font-size:40px;
+  margin:5px 0px 15px 0px;
+  
+}
+
+#acc input{
+    
+    display: block;
+    
+    padding:4px 2px;
+    border:solid 1px #aacfe4;
+    
+    
+}
+
