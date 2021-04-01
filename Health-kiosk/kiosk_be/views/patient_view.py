@@ -46,7 +46,7 @@ def deletePat(id):
     status = deletePatient(id)
 
     if status == True:
-        return jsonify({'result': 'success'}),201
+        return jsonify({'result': 'success'}),200
     else:
         return jsonify({'result': status})
 
