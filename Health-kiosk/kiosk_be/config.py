@@ -9,3 +9,4 @@ connection = f'mysql+pymysql://{dbuser}:{dbpass}@{dbhost}/{dbname}'
 
 class Config:
     SQLALCHEMY_DATABASE_URI = connection
+    JSON_SORT_KEYS = False

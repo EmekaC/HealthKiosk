@@ -1,15 +1,10 @@
 "id";"name";"surname";"dob";"email";"password";"address";"city";"mobile"
-"1";"et";"voluptates";"1979-10-10";"daniel.chance@example.net";"53337a87131d25";"86768 Lavon Loaf Suite 816
-North Jewel, SC 75270-0447";"West Lamarport";86759427
-"2";"perspiciatis";"dolorum";"2000-07-23";"krystal.hettinger@example.net";"b58505b13a76c9";"0733 Daugherty Plains Suite 038
-East Bethmouth, KY 68111-6369";"Botsfordton";49544808
-"4";"est";"in";"2016-11-11";"nmorar@example.com";"6c83fda2522643";"6586 Smitham Causeway Apt. 306
-Ferryland, SC 94697";"East Lavadaport";39864540
-"5";"accusamus";"sit";"1991-01-28";"mossie.turcotte@example.org";"ae91b996c99af1";"59806 Klocko Vista
-Lake Elisehaven, MS 39189-8067";"Lake Broderick";4301821
-"6";"non";"animi";"1980-07-14";"feest.josiane@example.net";"e1e3c6023d2ccf";"9323 Mosciski Haven
-Zettaburgh, CA 43116-0081";"East Beau";23562297
-"7";"est";"provident";"1987-07-12";"pattie.fadel@example.com";"1a706acd5aa4fe";"06895 Vandervort Islands Apt. 366
-Timmothyburgh, VT 15449";"North Jeremyfurt";21474836
-"8";"non";"quo";"2016-12-04";"vada50@example.com";"f2c8dd1a27811d";"213 Joannie Canyon
-Port Florida, MS 58328-2106";"New Ninatown";59010228
+"0123447M";"Mary ann";"Spiteri";"1947-06-02";"mary.ann.spiteri@example.net";"abcd12345%";"32, Triq Tal-Qasam, MST 1022";"Mosta";79272871
+"0123448M";"George";"Fenech";"1948-02-02";"george.fenech@example.net";"abcd12345%";"32, TRIQ Gio Felice Inglott, PMK 1133";"Pembroke";79259330
+"0123456M";"Mary";"Tanti";"1956-07-23";"mary.borg@example.net";"b58505b13a76c9";"32, TRIQ SANT' ANDRIJA, LJA 1520";"Lija";79121212
+"0123479M";"Paul";"Mifsud";"1979-10-10";"paul.mifsud@example.net";"53337a87131d25";"12, TRIQ WIGI ROSATO,  BML 1843";"Bormla";79759427
+"0123498G";"Matthew";"Sultana";"1998-11-11";"msult@example.com";"6c83fda2522643";"34, TRIQ SANTA TEODORA, XWK 2222";"IX-XEWKIJA";79864540
+"0123504H";"Francesca";"Farrugia";"2004-01-28";"fran.farrugia@example.org";"ae91b996c99af1";"65,  TRIQ DUN ALWIG MIZZI, GRB 1021";"L-GHARB";77301821
+"0123680M";"John";"Pace";"1980-07-14";"adam.pace@example.net";"e1e3c6023d2ccf";"120,  TRIQ IS-SANTWARJU, ZBR 1015";"HAZ-ZABBAR";79562297
+"1236787M";"Rita";"Sammut";"1987-07-12";"rit.sammut@example.com";"1a706acd5aa4fe";"24, TRIQ IL-BIES, SGN 1927";"SAN GWANN";99474836
+"2362805L";"Tony";"Cassar";"2005-12-04";"ton50@example.com";"f2c8dd1a27811d";"54, TRIQ MANWEL VITALE, RBT 1686";"IR-RABAT";99010228
