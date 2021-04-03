@@ -1,4 +1,6 @@
 {
     "python.pythonPath": "/Users/samiracachiaspiteri/Documents/HealthKiosk/Health-kiosk/kiosk_be/venv/bin/python3.9",
-    "python.linting.pylintPath": "/Users/samiracachiaspiteri/Desktop/Health-kiosk/kiosk_be/venv/lib/python3.9/site-packages/pylint"
+    "python.linting.pylintPath": "/Users/samiracachiaspiteri/Documents/HealthKiosk/Health-kiosk/kiosk_be/venv/lib/python3.9/site-packages/pylint",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
 }
