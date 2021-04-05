@@ -15,6 +15,7 @@ ma.init_app(app)
 
 #import views
 from kiosk_be.views.patient_view import patients_view
+from kiosk_be.views.login_view import login_view
 #register view blueprints
 app.register_blueprint(patients_view)
-
+app.register_blueprint(login_view)

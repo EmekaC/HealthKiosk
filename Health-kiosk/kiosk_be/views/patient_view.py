@@ -1,17 +1,20 @@
-from flask import render_template,Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request
 from kiosk_be.controllers.patients_controller import *
+from kiosk_be.views.login_view import token_required
 
 #register blueprint
 patients_view = Blueprint('patients_view', __name__)
 
 #routes
 @patients_view.route("/",methods=["GET"])
-def getPats():
+@token_required
+def getPats(current_user):
     patients = getPatients()
     return  jsonify(patients)
 
 @patients_view.route("/<id>",methods=["GET"])
-def getPatById(id):
+@token_required
+def getPatById(current_user,id):
     patient = getPatientById(id)
     
     if patient== False:
@@ -21,7 +24,8 @@ def getPatById(id):
     
 
 @patients_view.route("/create",methods=["POST"])
-def createPat():
+@token_required
+def createPat(current_user):
     data = request.get_json()
     id = data['id']
     name = data['name']
@@ -42,7 +46,8 @@ def createPat():
 
 
 @patients_view.route("/delete/<id>",methods=["DELETE"])
-def deletePat(id):
+@token_required
+def deletePat(current_user,id):
     status = deletePatient(id)
 
     if status == True:
@@ -52,7 +57,8 @@ def deletePat(id):
 
 
 @patients_view.route("/update/<id>",methods=["PUT"])
-def updatePat(id):
+@token_required
+def updatePat(current_user,id):
     data = request.get_json()
  
     for row in data:

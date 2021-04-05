@@ -16,6 +16,17 @@ def getPatientById(patientId):
     else:
         return False
 
+def getPatient(patientId):
+    print("Get patient by id for login")
+    if validateId(patientId):
+        patient = Patient.query.filter_by(id=patientId).first()
+        if patient:
+            return patient
+        else:
+            "No record found"
+    else:
+        return "Invalid id"
+
 def createPatient(patientId,name,surname,dob,email,password,address,city,mobile):
     print("Create patient")
     validation = (
