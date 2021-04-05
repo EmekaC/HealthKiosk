@@ -1,19 +1,22 @@
 from kiosk_be import app
 from kiosk_be.controllers.patients_controller import getPatient
 from werkzeug.security import generate_password_hash, check_password_hash
-import jwt, datetime
+import jwt, datetime, datedelta
 
 
 
 
-def login(userId, userPass):
+def login(userId, userPass, rem=False):
     patient = getPatient(userId)
     password = generate_password_hash(patient.password)
 
     if  patient and check_password_hash(password,userPass):
-        print(patient.id)
-        print(app.config['SECRET_KEY'])
-        token = jwt.encode({'id' : patient.id, 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'],algorithm="HS512")
+        
+        if rem == True:
+            token = jwt.encode({'id' : patient.id, 'exp' : datetime.datetime.utcnow() + datedelta.datedelta(months=1)}, app.config['SECRET_KEY'],algorithm="HS512")
+        else:
+            token = jwt.encode({'id' : patient.id, 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'],algorithm="HS512")
+        
         return token
 
     else:

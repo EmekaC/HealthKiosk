@@ -53,9 +53,9 @@ def createPatient(patientId,name,surname,dob,email,password,address,city,mobile)
         if not validateId(patientId):
             return "Invalid id"
         elif not validateString(name):
-             return "Invalid name"
+            return "Invalid name"
         elif not validateString(surname):
-             return "Invalid surname"
+            return "Invalid surname"
         elif not validateDOB(dob):
             return "Invalid dob"
         elif not validateEmail(email):
@@ -65,7 +65,7 @@ def createPatient(patientId,name,surname,dob,email,password,address,city,mobile)
         elif not validateString(city):
             return "Invalid city"
         else: 
-           return "Invalid mobile"
+            return "Invalid mobile"
         
             
     

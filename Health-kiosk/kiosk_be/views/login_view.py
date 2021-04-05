@@ -30,11 +30,15 @@ def token_required(f):
 @login_view.route('/login')
 def Userlogin():
     auth = request.authorization
-
+    data = request.get_json()
+    remember_me = data['remember-me']
     if not auth or not auth.username or not auth.password:
         return make_response('Could not verify', 401, {'WWW-Authenticate' : 'Basic realm="Login required!"'})
-
-    token = login(auth.username,auth.password)
+    
+    if remember_me == 'True':
+        token = login(auth.username,auth.password,True)
+    else:
+        token = login(auth.username,auth.password)
 
     if token:
         return jsonify({'token' : token})
