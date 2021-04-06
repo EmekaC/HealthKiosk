@@ -24,7 +24,6 @@ def getPatById(current_user,id):
     
 
 @patients_view.route("/create",methods=["POST"])
-@token_required
 def createPat(current_user):
     data = request.get_json()
     id = data['id']
@@ -60,7 +59,6 @@ def deletePat(current_user,id):
 @token_required
 def updatePat(current_user,id):
     data = request.get_json()
- 
     for row in data:
         field = row['key']
         value = row['value']
@@ -70,6 +68,3 @@ def updatePat(current_user,id):
         return jsonify({'result': 'success'}),201
     else:
         return jsonify({'result': status})
-
-    
-    
