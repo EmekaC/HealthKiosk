@@ -7,6 +7,7 @@ import jwt, datetime, datedelta
 
 
 def login(userId, userPass, rem=False):
+    print("Login in -> Generating new token")
     patient = getPatient(userId)
     password = generate_password_hash(patient.password)
 
@@ -54,9 +55,9 @@ def deleteExpiredTokens():
     tokens = Tokens.query.filter(Tokens.exp <= date).delete()
     try: 
         db.session.commit()
-        return True
+        
     except Exception as error:
         db.session.flush()
         db.session.rollback()
-        return str(error)
+        
     

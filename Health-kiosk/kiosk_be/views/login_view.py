@@ -6,11 +6,13 @@ from functools import wraps
 #register blueprint
 login_view = Blueprint('login_view', __name__)
 
+#creating token decorater to check request headers for token
 def token_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
         token = None
         revoked = getRevokedTokens()
+        deleteExpiredTokens()
         if 'x-access-token' in request.headers:
             token = request.headers['x-access-token']
 
@@ -58,22 +60,20 @@ def UserLogout():
         return jsonify({'message' : 'Token is missing!'}), 401
     if isRevoked(token):
         return jsonify({'message' : 'Token is revoked!'}), 401
+    try: 
+            data = jwt.decode(token, app.config['SECRET_KEY'],"HS512")
+    except:
+            return jsonify({'message' : 'Token is invalid!'}), 401
     else:
         status = logout(token)
         if status==True :
             return jsonify({'message' : 'Logout successfull'}),200
         else:
             return jsonify({'message' : status}),401
-    
+
+#test route    
 @login_view.route('/tokendata')
 def TokenData():
-    token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6IjAxMjM0NDZNIiwiZXhwIjoxNjE3NzM3NjIxfQ.2fd0EzOd55eV49vkL4z9jmZTk2HGJZ0e2_I-YrEyxy7ZOCw0RkWNlw8DbeiZSXzx7sTL5H-QZnxe62KM0_Xz5w'
     tokens = getRevokedTokens()
-    print(tokens)
     return jsonify(tokens)
 
-
-@login_view.route('/updatetokens')
-def deleteTokens():
-    status = deleteExpiredTokens()
-    return jsonify({'message' : status})
