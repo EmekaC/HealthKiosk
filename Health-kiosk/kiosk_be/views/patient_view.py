@@ -6,11 +6,11 @@ from kiosk_be.views.login_view import token_required
 patients_view = Blueprint('patients_view', __name__)
 
 #routes
-@patients_view.route("/",methods=["GET"])
-@token_required
-def getPats(current_user):
+@patients_view.route("/patients",methods=["GET"])
+#@token_required
+def getPats():
     patients = getPatients()
-    return  jsonify(patients)
+    return  jsonify({'patients': patients})
 
 @patients_view.route("/<id>",methods=["GET"])
 @token_required

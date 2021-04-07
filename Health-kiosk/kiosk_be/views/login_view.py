@@ -32,7 +32,7 @@ def token_required(f):
     return decorated
 
 
-@login_view.route('/login')
+@login_view.route('/login',methods=["POST"])
 def Userlogin():
     auth = request.authorization
     
