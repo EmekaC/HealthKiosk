@@ -1,7 +1,9 @@
 import datetime
 from flask import current_app
 from kiosk_be import db, ma
+from kiosk_be.models.results import Results
 
+#Patient table model
 class Patient(db.Model):
     id = db.Column(db.String(8),primary_key=True, unique=True, nullable=False)
     name = db.Column(db.String(45), nullable=False)
@@ -12,7 +14,9 @@ class Patient(db.Model):
     address = db.Column(db.String(100), nullable=False)
     city = db.Column(db.String(45), nullable=False)
     mobile = db.Column(db.Integer, nullable=False, unique=True)
+    results = db.relationship('Results', backref='patient')
 
+    #Create new Patient object
     def __init__(self,id,name,surname,dob,email,password,address,city,mobile):
         self.id = id
         self.name = name
@@ -25,11 +29,12 @@ class Patient(db.Model):
         self.mobile = mobile
 
     
-
+#Patient schema in order to serialize record
 class PatientSchema(ma.Schema):
     class Meta:
         fields = ('id', 'name', 'surname', 'dob', 'email', 'address', 'city', 'mobile')
         ordered = True
 
+# Methods used to serialise/deserialise db rows
 patient_share_schema = PatientSchema()
 patients_share_schema = PatientSchema(many=True)

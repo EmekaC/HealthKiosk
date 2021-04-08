@@ -4,9 +4,10 @@ CREATE TABLE `results` (
   `weight` decimal(5,2) NOT NULL,
   `bloodOx` int NOT NULL,
   `heartRate` int NOT NULL,
+  `taken_on` datetime NOT NULL,
   `patientId` varchar(8) NOT NULL,
   PRIMARY KEY (`resultNo`),
-  UNIQUE KEY `resultNo_UNIQUE` (`resultNo`),
   KEY `patientID_idx` (`patientId`),
   CONSTRAINT `patientID` FOREIGN KEY (`patientId`) REFERENCES `patient` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
+SELECT * FROM `health-kiosk`.results;
