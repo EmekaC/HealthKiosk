@@ -10,7 +10,8 @@ results_view = Blueprint('results_view', __name__)
 
 #Get all results
 @results_view.route("/api/results",methods=["GET"])
-def getResult():
+@token_required
+def getResult(current_user):
     results = getAllResults()
     return  jsonify(results)
 
