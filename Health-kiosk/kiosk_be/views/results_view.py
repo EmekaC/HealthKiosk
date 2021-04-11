@@ -39,3 +39,21 @@ def addPatientResult(current_user):
         return jsonify({'result': 'success'}),201
     else:
         return jsonify({'result': status}),422
+    
+
+# Add remark by patient id and date of result 
+@results_view.route("/api/results/remarks/<id>",methods=["PUT"])
+def addResultRemark(id):
+    data = request.get_json()
+    for row in data:
+        try:
+            date = row['date']
+            remarks = row['remark']
+            status = addRemark(id,date,remarks)
+        except Exception as error:
+            return jsonify({'result': 'Missing fields in array'}),400
+        
+    if status == True:
+        return jsonify({'result': 'success'}),201
+    else:
+        return jsonify({'result': status})

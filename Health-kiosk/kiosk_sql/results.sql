@@ -6,8 +6,8 @@ CREATE TABLE `results` (
   `heartRate` int NOT NULL,
   `taken_on` datetime NOT NULL,
   `patientId` varchar(8) NOT NULL,
+  `remarks` mediumtext,
   PRIMARY KEY (`resultNo`),
   KEY `patientID_idx` (`patientId`),
   CONSTRAINT `patientID` FOREIGN KEY (`patientId`) REFERENCES `patient` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=ascii;
-SELECT * FROM `health-kiosk`.results;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=ascii;

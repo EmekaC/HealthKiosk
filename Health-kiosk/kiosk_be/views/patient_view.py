@@ -31,18 +31,20 @@ def getPatById(current_user,id):
 @patients_view.route("/api/patients/create",methods=["POST"])
 def createPat():
     data = request.get_json()
-    id = data['id']
-    name = data['name']
-    surname = data['surname']
-    dob = data['dob']
-    email = data['email']
-    password =data['password']
-    address = data['address']
-    city = data['city']
-    mobile = data['mobile']
-
-    status = createPatient(id,name,surname,dob,email,password,address,city,mobile)
-
+    try:
+        id = data['id']
+        name = data['name']
+        surname = data['surname']
+        dob = data['dob']
+        email = data['email']
+        password =data['password']
+        address = data['address']
+        city = data['city']
+        mobile = data['mobile']
+        status = createPatient(id,name,surname,dob,email,password,address,city,mobile)
+    except Exception as error:
+        return jsonify({'result': 'Missing fields in array'}),400
+    
     if status == True:
         return jsonify({'result': 'success'}),201
     else:
@@ -67,9 +69,12 @@ def deletePat(current_user,id):
 def updatePat(current_user,id):
     data = request.get_json()
     for row in data:
-        field = row['key']
-        value = row['value']
-        status = updatePatient(id,field,value)
+        try:
+            field = row['key']
+            value = row['value']
+            status = updatePatient(id,field,value)
+        except Exception as error:
+            return jsonify({'result': 'Missing fields in array'}),400
         
     if status == True:
         return jsonify({'result': 'success'}),201

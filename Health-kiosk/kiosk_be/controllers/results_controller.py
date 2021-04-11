@@ -51,4 +51,24 @@ def addResult(temperature, weight, bloodOx, heartRate, patientId):
             return "Invalid blood oxygen value"
         else:
             return "Invalid pulse rate"
-
+        
+        
+def addRemark(patientId,date,remark):
+    isId = validateId(patientId)
+    isDate = validateDateTimestamp(date)
+    
+    if isId and isDate:
+        record = Results.query.filter(Results.patientId == patientId, Results.taken_on == date).first_or_404(description='There is no result record found for patient with id {}'.format(patientId))
+        record.remarks = remark
+        try: 
+            db.session.commit()
+            return True
+        except Exception as error:
+            db.session.flush()
+            db.session.rollback()
+            return str(error)
+    else:
+        if not isId:
+            return "Invalid ID"
+        else:
+            return "Invalid date format, should be YYYY-MM-DD HH:MM:SS"

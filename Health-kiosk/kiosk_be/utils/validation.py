@@ -1,4 +1,4 @@
-import re
+import re, datetime
 
 # Validation methods for inputs received before placing them in db
 
@@ -17,9 +17,10 @@ def validateEmail(email):
 
 
 def validateDOB(date):
-    if re.match("^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$",date):
+    try:
+        datetime.datetime.strptime(date, '%Y-%m-%d')
         return True
-    else:
+    except ValueError:
         return False
 
 
@@ -66,4 +67,12 @@ def validateBloodOx(bloodOx):
     if re.match("^([8-9][0-9])|(1[01][0])$",str(bloodOx)):
         return True
     else:
-        return False 
+        return False
+    
+def validateDateTimestamp(date):
+    try:
+        datetime.datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
+        return True
+    except ValueError:
+        return False
+    

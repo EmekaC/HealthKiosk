@@ -12,6 +12,7 @@ class Results(db.Model):
     heartRate = db.Column(db.Integer, nullable=False)
     taken_on = db.Column(db.DateTime, nullable=False)
     patientId = db.Column(db.String(8), db.ForeignKey('patient.id'),nullable=False)
+    remarks = db.Column(db.String(),nullable=True)
     
     #Create new Results object
     def __init__(self,temperature,weight,bloodOx,heartRate,patientId):
@@ -29,7 +30,7 @@ class ResultsSchema(ma.Schema):
     temperature = fields.Float()
     weight = fields.Float()
     class Meta:
-        fields = ('resultNo', 'temperature', 'weight', 'bloodOx', 'heartRate', 'taken_on', 'patientId')
+        fields = ('resultNo', 'temperature', 'weight', 'bloodOx', 'heartRate', 'taken_on', 'patientId', 'remarks')
         ordered = True
         
         
