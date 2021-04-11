@@ -2,12 +2,14 @@ from kiosk_be import db
 from kiosk_be.models.patient import Patient, patient_share_schema, patients_share_schema
 from kiosk_be.utils.validation import *
 
+#get all registered database
 def getPatients():
     print("Get all patients")
 
     patients = Patient.query.all()
     return patients_share_schema.dump(patients)
 
+#get a patient's name and surname by id
 def getPatientById(patientId):
     print("Get patient by id")
     if validateId(patientId):
@@ -16,6 +18,7 @@ def getPatientById(patientId):
     else:
         return False
 
+# get patient by id
 def getPatient(patientId):
     print("Get patient by id for login")
     if validateId(patientId):
@@ -27,6 +30,7 @@ def getPatient(patientId):
     else:
         return "Invalid id"
 
+# add new patient -> register
 def createPatient(patientId,name,surname,dob,email,password,address,city,mobile):
     print("Create patient")
     validation = (
@@ -68,7 +72,7 @@ def createPatient(patientId,name,surname,dob,email,password,address,city,mobile)
             return "Invalid mobile"
         
             
-    
+# delete patient account 
 def deletePatient(patientId):
     print("Delete patient")
     if validateId(patientId):
@@ -85,6 +89,7 @@ def deletePatient(patientId):
         return "Invalid ID"
 
 
+# update patient details
 def updatePatient(patientId,key,value):
     print("Update patient")
 
