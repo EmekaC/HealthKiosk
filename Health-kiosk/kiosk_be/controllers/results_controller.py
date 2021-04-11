@@ -52,7 +52,7 @@ def addResult(temperature, weight, bloodOx, heartRate, patientId):
         else:
             return "Invalid pulse rate"
         
-        
+#Add remark to patient result record        
 def addRemark(patientId,date,remark):
     isId = validateId(patientId)
     isDate = validateDateTimestamp(date)
