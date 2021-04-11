@@ -1,5 +1,5 @@
 from flask import  Blueprint,jsonify, request, make_response
-import jwt
+import jwt, datetime
 from kiosk_be.controllers.login_controller import *
 from functools import wraps
 
@@ -11,11 +11,9 @@ def token_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
         token = None
-        revoked = getRevokedTokens()
         deleteExpiredTokens()
         if 'x-access-token' in request.headers:
             token = request.headers['x-access-token']
-
         if not token:
             return jsonify({'message' : 'Token is missing!'}), 401
         
@@ -25,14 +23,16 @@ def token_required(f):
             data = jwt.decode(token, app.config['SECRET_KEY'],"HS512")
             current_user = getPatient(data['id'])
         except:
-            return jsonify({'message' : 'Token is invalid!'}), 401
+            return jsonify({'message' : 'Invalid token!'}), 401
 
         return f(current_user, *args, **kwargs)
 
     return decorated
 
 
-@login_view.route('/login',methods=["POST"])
+
+# Patient login
+@login_view.route('/api/login')
 def Userlogin():
     auth = request.authorization
     
@@ -52,8 +52,8 @@ def Userlogin():
 
     return make_response('Could not verify', 401, {'WWW-Authenticate' : 'Basic realm="Login required!"'})
 
-
-@login_view.route('/logout')
+# Patient logout
+@login_view.route('/api/logout')
 def UserLogout():
     token = request.headers['x-access-token']
     if not token:
@@ -71,8 +71,9 @@ def UserLogout():
         else:
             return jsonify({'message' : status}),401
 
-#test route    
-@login_view.route('/tokendata')
+
+#test route -> To see revoked tokens
+@login_view.route('/api/tokendata')
 def TokenData():
     tokens = getRevokedTokens()
     return jsonify(tokens)

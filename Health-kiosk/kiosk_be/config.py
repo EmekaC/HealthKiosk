@@ -1,6 +1,7 @@
 import mysql.connector, pymysql
 import secrets
 
+#Database specifications
 dbhost = 'localhost'
 dbuser = 'root'
 dbpass = 'password12345%'
@@ -8,8 +9,9 @@ dbname = 'health-kiosk'
 
 connection = f'mysql+pymysql://{dbuser}:{dbpass}@{dbhost}/{dbname}'
 
+#Flask app configurations
 class Config:
     SQLALCHEMY_DATABASE_URI = connection
     JSON_SORT_KEYS = False
-    SECRET_KEY = secrets.token_hex(16)
+    SECRET_KEY = secrets.token_urlsafe(16)
     

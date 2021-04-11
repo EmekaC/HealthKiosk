@@ -5,7 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import jwt, datetime, datedelta
 
 
-
+# Patient login and generation of access token 
 def login(userId, userPass, rem=False):
     print("Login in -> Generating new token")
     patient = getPatient(userId)
@@ -23,7 +23,7 @@ def login(userId, userPass, rem=False):
     else:
         return "Invalid credentials"
     
-    
+# Patient logout and revoking generated access token    
 def logout(token):
     print("Revoking acesss to token")
     data = jwt.decode(token, app.config['SECRET_KEY'],"HS512")
@@ -37,12 +37,13 @@ def logout(token):
         db.session.rollback()
         return str(error)
         
-        
+# Get all revoked tokens from db        
 def getRevokedTokens():
     print("Get all revoked tokens")
     tokens = Tokens.query.with_entities(Tokens.token).all()
     return tokens_share_schema.dump(tokens)
 
+# check if a token is revoked
 def isRevoked(token):
     revoked = getRevokedTokens()
     for i in range(len(revoked)):
@@ -50,6 +51,7 @@ def isRevoked(token):
                 return True
     return False        
 
+# Delete expired revoked tokens from db
 def deleteExpiredTokens():
     date = datetime.datetime.now()
     tokens = Tokens.query.filter(Tokens.exp <= date).delete()

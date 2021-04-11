@@ -1,4 +1,6 @@
-import re
+import re, datetime
+
+# Validation methods for inputs received before placing them in db
 
 def validateString(value):
     if re.match("^[a-zA-Z ]*$",value):
@@ -15,9 +17,10 @@ def validateEmail(email):
 
 
 def validateDOB(date):
-    if re.match("^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$",date):
+    try:
+        datetime.datetime.strptime(date, '%Y-%m-%d')
         return True
-    else:
+    except ValueError:
         return False
 
 
@@ -39,4 +42,37 @@ def validateId(id):
         return True
     else:
         return False
+    
+def validateTemperature(temperature):
+    if re.match("^(\d{2}|\d{0,5}\.\d{1,2})$",str(temperature)):
+        return True
+    else:
+        return False 
+    
+def validateWeight(weight):
+    if re.match("^(\d{2,3}|\d{0,5}\.\d{1,2})$",str(weight)):
+        return True
+    else:
+        return False 
 
+def validateHeartPulse(pulse):
+    #range 60 - 210
+    if re.match("^([6-9][0-9]|1[01]?[0-9][0-9]?|2[01][0])$",str(pulse)):
+        return True
+    else:
+        return False 
+    
+def validateBloodOx(bloodOx):
+    #80- 100
+    if re.match("^([8-9][0-9])|(1[01][0])$",str(bloodOx)):
+        return True
+    else:
+        return False
+    
+def validateDateTimestamp(date):
+    try:
+        datetime.datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
+        return True
+    except ValueError:
+        return False
+    
