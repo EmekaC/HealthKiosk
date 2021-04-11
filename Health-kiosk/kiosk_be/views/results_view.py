@@ -27,13 +27,15 @@ def getPatientsResult(current_user,id):
 @token_required
 def addPatientResult(current_user):
     data = request.get_json()
-    patientId = data['id']
-    temperature = data['temperature']
-    weight = data['weight']
-    bloodOx = data['bloodOx']
-    heartRate = data['heartRate']
-    
-    status = addResult(temperature,weight,bloodOx,heartRate,patientId)
+    try:
+        patientId = data['id']
+        temperature = data['temperature']
+        weight = data['weight']
+        bloodOx = data['bloodOx']
+        heartRate = data['heartRate']
+        status = addResult(temperature,weight,bloodOx,heartRate,patientId)
+    except Exception as error:
+        return jsonify({'result': 'Missing fields in array'}),400
     
     if status == True:
         return jsonify({'result': 'success'}),201
