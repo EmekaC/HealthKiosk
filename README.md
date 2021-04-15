@@ -37,3 +37,6 @@ Required PIP packages:
 - pip install cryptography
 - pip install PyJWT
 - pip install datedelta
+
+
+To install pip packages use this command: pip install -r requirements.txt (in directory of kiosk_be)
