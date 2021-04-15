@@ -32,7 +32,7 @@ def token_required(f):
 
 
 # Patient login
-@login_view.route('/api/login')
+@login_view.route('/api/login',methods=["GET","POST"])
 def Userlogin():
     auth = request.authorization
     

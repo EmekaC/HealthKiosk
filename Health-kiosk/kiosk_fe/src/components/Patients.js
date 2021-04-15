@@ -2,29 +2,38 @@ import React, { useEffect, useState }  from 'react';
 import './Gen.css';
 import { Link } from "react-router-dom";
 
-function Patients() {
-    const [patients, setPatients] = useState([]);
 
+function Patients() {
+    console.log("token:"+sessionStorage.getItem('token'));
+    const [patients, setPatients] = useState([]);
   useEffect(() => {
-    fetch("/patients").then(response =>
-      response.json().then(data => {
-        console.log(data)
-        setPatients(data.patients);
-      })
-    );
+    fetch("api/patients", {
+        method: "GET",
+        headers: {
+          "x-access-token": sessionStorage.getItem('token')
+        },
+      }).then(response =>
+          response.json().then(data => {
+          console.log(data)
+          setPatients(data.patients);
+        })).catch(
+          (error) => {
+            console.log(error);
+          }
+        )
   }, []);
     return (
         <div>
-
+          <h1>Token patient id: {sessionStorage.getItem('id')}</h1>
             <h1 className="titlebar">Testing api call</h1>
 
             <div>
-            
-              {patients.map(patient => (
+              { typeof patients != 'undefined' ? patients.map(patient => (
                  <li>
                    {patient.id}: {patient.name},{patient.surname}
                 </li>
-               ))} 
+              )): <p>Empty list;</p> }
+              
             </div>
 
         </div>

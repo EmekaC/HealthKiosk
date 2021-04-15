@@ -3,11 +3,13 @@ import { Button } from './Button';
 import './Content.css';
 import './Gen.css';
 import { Link } from "react-router-dom";
+import jwt_decode from "jwt-decode"
 
 function Content() {
-    const [token,setToken] = useState("")
     const [id, setID] = useState("");
     const [password, setPassword] = useState("");
+  
+  
     
     function handleIDChange(e) {
         id = e.target.value
@@ -38,15 +40,15 @@ function Content() {
                 <label for="email"><b>Password: </b></label>
                 <input type="password" name="password" required value={password} onChange={e => setPassword(e.target.value)}></input>
             </form>
-            <p>{token}</p>
             <br></br>
+            
 
 
             <div className="footer">
                 <Link to={'./signUp'}><Button className='btn' buttonStyle='btn-outline' buttonSize='btn-large'>New Account</Button></Link>
                 <Button className='btn' buttonStyle='btn-login' buttonSize='btn-large' onClick={async () => {
             
-            const response = await fetch("/login", {
+            const response = await fetch("api/login", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -58,10 +60,19 @@ function Content() {
             if (response.ok) {
               console.log("response worked!");
               response.json().then(data => {
-                console.log(data)
-                setToken(data.token)
+                console.log(data);
+                try{
+                  sessionStorage.setItem('token',data.token);
+                  let patientId = jwt_decode(data.token);
+                  console.log("Patient id"+patientId['id']);
+                  sessionStorage.setItem('id',patientId['id']);
+                } catch(error){
+                  console.log(error)
+                  console.log(data.token)
+                }
               })
             }
+            window.location.href = "./pats";
           }}>Login</Button>
             </div>
 
