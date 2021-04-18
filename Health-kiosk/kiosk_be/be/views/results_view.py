@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
-from kiosk_be.controllers.results_controller import *
-from kiosk_be.views.login_view import token_required
+from be.controllers.results_controller import *
+from be.views.login_view import token_required
 
 
 #register blueprint

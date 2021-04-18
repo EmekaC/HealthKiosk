@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
-from kiosk_be.controllers.patients_controller import *
-from kiosk_be.views.login_view import token_required
+from be.controllers.patients_controller import *
+from be.views.login_view import token_required
 
 #register blueprint
 patients_view = Blueprint('patients_view', __name__)
@@ -9,9 +9,9 @@ patients_view = Blueprint('patients_view', __name__)
 
 #Get all patients
 @patients_view.route("/api/patients",methods=["GET"])
-@token_required
-def getAllPatients(current_user):
-    print(current_user)
+#@token_required
+def getAllPatients():
+    
     patients = getPatients()
     return  jsonify({'patients': patients})
 

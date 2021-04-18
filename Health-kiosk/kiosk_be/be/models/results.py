@@ -1,7 +1,7 @@
 import datetime
 from flask import current_app
 from flask_marshmallow.fields import fields
-from kiosk_be import db, ma
+from be import db, ma
 
 #Results table model
 class Results(db.Model):

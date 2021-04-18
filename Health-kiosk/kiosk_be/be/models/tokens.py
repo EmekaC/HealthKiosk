@@ -1,6 +1,6 @@
 import datetime
 from flask import current_app
-from kiosk_be import db, ma
+from be import db, ma
 
 #Tokens table model
 class Tokens(db.Model):

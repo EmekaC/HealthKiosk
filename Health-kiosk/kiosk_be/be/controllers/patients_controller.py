@@ -1,6 +1,6 @@
-from kiosk_be import db
-from kiosk_be.models.patient import Patient, patient_share_schema, patients_share_schema
-from kiosk_be.utils.validation import *
+from be import db
+from be.models.patient import Patient, patient_share_schema, patients_share_schema
+from be.utils.validation import *
 
 #get all registered database
 def getPatients():

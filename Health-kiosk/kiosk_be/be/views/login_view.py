@@ -1,6 +1,6 @@
 from flask import  Blueprint,jsonify, request, make_response
 import jwt, datetime
-from kiosk_be.controllers.login_controller import *
+from be.controllers.login_controller import *
 from functools import wraps
 
 #register blueprint

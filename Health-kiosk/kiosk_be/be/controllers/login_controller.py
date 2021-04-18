@@ -1,6 +1,6 @@
-from kiosk_be import app, db
-from kiosk_be.models.tokens import Tokens, tokens_share_schema
-from kiosk_be.controllers.patients_controller import getPatient
+from be import create_app, db
+from  be.models.tokens import Tokens, tokens_share_schema
+from  be.controllers.patients_controller import getPatient
 from werkzeug.security import generate_password_hash, check_password_hash
 import jwt, datetime, datedelta
 
@@ -14,9 +14,9 @@ def login(userId, userPass, rem=False):
     if  patient and check_password_hash(password,userPass):
         
         if rem == True:
-            token = jwt.encode({'id' : patient.id, 'exp' : datetime.datetime.utcnow() + datedelta.datedelta(months=1)}, app.config['SECRET_KEY'],algorithm="HS512")
+            token = jwt.encode({'id' : patient.id, 'exp' : datetime.datetime.utcnow() + datedelta.datedelta(months=1)}, create_app().config['SECRET_KEY'],algorithm="HS512")
         else:
-            token = jwt.encode({'id' : patient.id, 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=5)}, app.config['SECRET_KEY'],algorithm="HS512")
+            token = jwt.encode({'id' : patient.id, 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=5)}, create_app().config['SECRET_KEY'],algorithm="HS512")
         
         return token
 
@@ -26,7 +26,7 @@ def login(userId, userPass, rem=False):
 # Patient logout and revoking generated access token    
 def logout(token):
     print("Revoking acesss to token")
-    data = jwt.decode(token, app.config['SECRET_KEY'],"HS512")
+    data = jwt.decode(token, create_app().config['SECRET_KEY'],"HS512")
     revokeToken = Tokens(token,datetime.datetime.fromtimestamp(data['exp']))
     try: 
         db.session.add(revokeToken)

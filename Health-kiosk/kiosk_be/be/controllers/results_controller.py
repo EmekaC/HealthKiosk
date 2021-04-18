@@ -1,6 +1,6 @@
-from kiosk_be import db
-from kiosk_be.models.results import Results , result_share_schema , results_share_schema 
-from kiosk_be.utils.validation import *
+from be import db
+from be.models.results import Results , result_share_schema , results_share_schema 
+from be.utils.validation import *
 
 
 # get all results from db

@@ -1,7 +1,7 @@
 import datetime
 from flask import current_app
-from kiosk_be import db, ma
-from kiosk_be.models.results import Results
+from be import db, ma
+from be.models.results import Results
 
 #Patient table model
 class Patient(db.Model):
