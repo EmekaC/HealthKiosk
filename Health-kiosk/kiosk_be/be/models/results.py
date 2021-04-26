@@ -11,7 +11,7 @@ class Results(db.Model):
     bloodOx = db.Column(db.Integer, nullable=False)
     heartRate = db.Column(db.Integer, nullable=False)
     taken_on = db.Column(db.DateTime, nullable=False)
-    patientId = db.Column(db.String(8), db.ForeignKey('patient.id'),nullable=False)
+    #patientId = db.Column(db.String(8), db.ForeignKey('patient.id'),nullable=False)
     remarks = db.Column(db.String(),nullable=True)
     
     #Create new Results object
@@ -21,7 +21,7 @@ class Results(db.Model):
         self.bloodOx = bloodOx
         self.heartRate = heartRate
         self.taken_on = datetime.datetime.now()
-        self.patientId = patientId
+       # self.patientId = patientId
         
 
     
@@ -30,7 +30,7 @@ class ResultsSchema(ma.Schema):
     temperature = fields.Float()
     weight = fields.Float()
     class Meta:
-        fields = ('resultNo', 'temperature', 'weight', 'bloodOx', 'heartRate', 'taken_on', 'patientId', 'remarks')
+        fields = ('resultNo', 'temperature', 'weight', 'bloodOx', 'heartRate', 'taken_on', 'remarks')
         ordered = True
         
         

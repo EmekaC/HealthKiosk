@@ -43,6 +43,26 @@ def validateId(id):
     else:
         return False
     
+def validateSiblings(sib):
+    if re.match("^[0-1]$",sib):
+        return True
+    else:
+        return False
+    
+def validateGender(gender):
+    genders = ['Male','Female','Other']
+    if validateString(gender) and (gender in genders):
+       return True
+    else:
+        return False
+
+def validateMartialStatus(status):
+    statuses = ['Single','Married','Domestic Partnership','Divorced']
+    if validateString(status) and (status in statuses):
+       return True
+    else:
+        return False
+    
 def validateTemperature(temperature):
     if re.match("^(\d{2}|\d{0,5}\.\d{1,2})$",str(temperature)):
         return True

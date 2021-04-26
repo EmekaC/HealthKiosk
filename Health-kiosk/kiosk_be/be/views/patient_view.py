@@ -9,13 +9,22 @@ patients_view = Blueprint('patients_view', __name__)
 
 #Get all patients
 @patients_view.route("/api/patients",methods=["GET"])
-#@token_required
-def getAllPatients():
+@token_required
+def getAllPatients(current_user):
     
     patients = getPatients()
     return  jsonify({'patients': patients})
 
-#Get patient bu id
+#Get all active patients
+@patients_view.route("/api/patients/active",methods=["GET"])
+@token_required
+def getAllActivePatients(current_user):
+    
+    patients = getActivePatients()
+    return  jsonify({'patients': patients})
+
+
+#Get patient by id
 @patients_view.route("/api/patients/<id>",methods=["GET"])
 @token_required
 def getPatById(current_user,id):
@@ -35,15 +44,19 @@ def createPat():
         id = data['id']
         name = data['name']
         surname = data['surname']
+        mobile = data['mobile']
+        gender = data['gender']
         dob = data['dob']
-        email = data['email']
-        password =data['password']
         address = data['address']
         city = data['city']
-        mobile = data['mobile']
-        status = createPatient(id,name,surname,dob,email,password,address,city,mobile)
+        marital_status = data['marital_status']
+        siblings = data['siblings']
+        email = data['email']
+        password =data['password']
+        
+        status = createPatient(id,name,surname,mobile,gender,dob,address,city,marital_status,siblings,email,password)
     except Exception as error:
-        return jsonify({'result': 'Missing fields in array'}),400
+        return jsonify({'result': error }),400
     
     if status == True:
         return jsonify({'result': 'success'}),201
@@ -56,7 +69,7 @@ def createPat():
 @token_required
 def deletePat(current_user,id):
     status = deletePatient(id)
-
+    
     if status == True:
         return jsonify({'result': 'success'}),200
     else:
@@ -74,7 +87,7 @@ def updatePat(current_user,id):
             value = row['value']
             status = updatePatient(id,field,value)
         except Exception as error:
-            return jsonify({'result': 'Missing fields in array'}),400
+            return jsonify({'result': error }),400
         
     if status == True:
         return jsonify({'result': 'success'}),201
