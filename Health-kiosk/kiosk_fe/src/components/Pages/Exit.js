@@ -1,15 +1,18 @@
 import React from 'react'
 import '../../app.css'
 import Final from '../Final'
+import TitleBar from '../TitleBar'
 
 
-function Home() {
+function Exit() {
     return (
         <>
+            <TitleBar/>
+
             <Final />
             
         </>
     );
 }
 
-export default Final;
+export default Exit;

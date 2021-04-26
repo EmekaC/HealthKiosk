@@ -8,10 +8,6 @@ function Content() {
     return (
         <div>
 
-            <div className="banner">
-                <img src="/images/Banner.png" />
-            </div>
-
             <form>
                 <label for="email"><b>ID: </b></label>
                 <input type="text" name="id" required></input>
@@ -20,14 +16,11 @@ function Content() {
                 <input type="password" name="password" required></input>
             </form>
 
-            <br></br>
-
-
             <div className="footer">
-                <Link to={'./signUp'}><Button className='btn' buttonStyle='btn-outline' buttonSize='btn-large'>New Account</Button></Link>
-                <Link to={'./measurements'}><Button className='btn' buttonStyle='btn-login' buttonSize='btn-large'>Login</Button></Link>
+            <Link to={'./signUp'}><Button className='btn' buttonStyle='btn-outline' buttonSize='btn-large'>New Account</Button></Link>
+            <Link to={'./measurements'}><Button className='btn' buttonStyle='btn-login' buttonSize='btn-large'>Login</Button></Link>
             </div>
-
+            
         </div>
 
     )

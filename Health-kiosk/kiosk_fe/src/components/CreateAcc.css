@@ -1,16 +1,51 @@
-
-
 form { 
   margin: 0 auto; 
-  width:50%;
+  display: table;
+  
+}
+
+input{
+  display: block;   
+  border:solid 2px black;
+  width: fit-content;
+  float: right;
+  
+}
+
+
+label{
+  text-align: right;
+}
+
+h1{
+  font-size: 50px;
+  -webkit-text-stroke: 2px rgb(0, 0, 0);
+  color: white;
 }
     
-.signup{
+.patient{
     font-size: 40px;
-    text-align: center;
-    align-content: center;
-    display: inline-block;
+    background-color: whitesmoke;
+    padding : 20px 20px;
+    display: grid;
+    grid-template-columns: auto auto auto auto ;
+    grid-gap: 20px;
+    border-style: double;
+    border-width: 10px;
     
+    
+}
+
+.contact{
+  font-size: 40px;
+  
+  background-color: whitesmoke;
+    
+  display: grid;
+  grid-template-columns: auto auto auto auto ;
+  grid-gap: 20px;
+  border-style: double;
+  border-width: 10px;
 }
 
 

@@ -8,27 +8,28 @@ function Results() {
     return (
         <div>
 
-            <h1 className="titlebar">Instructions and Results</h1>
+            <h1 className="title">Instructions and Results</h1>
 
-            <div>
-                <img src="/images/human.png" className="center" />
-                <div className="instructions">
+            <div id="grid-page">
+                
+                <div className="instructions" >
                     <p> 1. Step on the  plate to measure your weight</p>
                     <p> 2. Attach the oximeter to your finger.</p>
                     <p> 3. Point the Temperature sensor at your forehead</p>
                     <p> 4. Relax while the kiosk takes your readings</p>
                 </div>
-                <div className="readings">
+
+                <img src="/images/human.png" className="diagram" />
+
+                <div className="readings" >
                     <div id="grid-line">
                         <div class="cell">Temperature</div>
                         <div class="cell">Weight</div>
                         <div class="cell">Blood Pressure</div>
                         
-                        <div class="cell">BMI</div>
-                        <div class="cell">Test</div>
-                        <div class="cell">Test</div>
                     </div>
                 </div>
+
             </div>
 
             <div className="footer">
