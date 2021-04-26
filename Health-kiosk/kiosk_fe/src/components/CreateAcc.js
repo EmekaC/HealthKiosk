@@ -23,7 +23,7 @@ function CreateAcc() {
                     <input type="text" name="surname" required></input>
 
                     <label for="mobile"><b>Mobile</b></label>
-                    <input type="text" name="mobile" required></input>
+                    <input type="tel" name="mobile" required></input>
 
                     <label for="gender"><b>Gender</b></label>
                     <input type="text" name="gender" required></input>
@@ -71,7 +71,7 @@ function CreateAcc() {
                     <input type="text" name="surname" required></input>
 
                     <label for="mobile"><b>Mobile</b></label>
-                    <input type="text" name="mobile" required></input>
+                    <input type="tel" name="mobile" required></input>
 
                     <label for="gender"><b>Gender</b></label>
                     <input type="text" name="gender" required></input>
