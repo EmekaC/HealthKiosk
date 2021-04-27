@@ -1,10 +1,8 @@
-"id";"name";"surname";"dob";"email";"password";"address";"city";"mobile"
-"0123447M";"Mary ann";"Spiteri";"1947-06-02";"mary.ann.spiteri@example.net";"abcd12345%";"32, Triq Tal-Qasam, MST 1022";"Mosta";79272871
-"0123448M";"George";"Fenech";"1948-02-02";"george.fenech@example.net";"abcd12345%";"32, TRIQ Gio Felice Inglott, PMK 1133";"Pembroke";79259330
-"0123456M";"Mary";"Tanti";"1956-07-23";"mary.borg@example.net";"b58505b13a76c9";"32, TRIQ SANT' ANDRIJA, LJA 1520";"Lija";79121212
-"0123479M";"Paul";"Mifsud";"1979-10-10";"paul.mifsud@example.net";"53337a87131d25";"12, TRIQ WIGI ROSATO,  BML 1843";"Bormla";79759427
-"0123498G";"Matthew";"Sultana";"1998-11-11";"msult@example.com";"6c83fda2522643";"34, TRIQ SANTA TEODORA, XWK 2222";"IX-XEWKIJA";79864540
-"0123504H";"Francesca";"Farrugia";"2004-01-28";"fran.farrugia@example.org";"ae91b996c99af1";"65,  TRIQ DUN ALWIG MIZZI, GRB 1021";"L-GHARB";77301821
-"0123680M";"John";"Pace";"1980-07-14";"adam.pace@example.net";"e1e3c6023d2ccf";"120,  TRIQ IS-SANTWARJU, ZBR 1015";"HAZ-ZABBAR";79562297
-"1236787M";"Rita";"Sammut";"1987-07-12";"rit.sammut@example.com";"1a706acd5aa4fe";"24, TRIQ IL-BIES, SGN 1927";"SAN GWANN";99474836
-"2362805L";"Tony";"Cassar";"2005-12-04";"ton50@example.com";"f2c8dd1a27811d";"54, TRIQ MANWEL VITALE, RBT 1686";"IR-RABAT";99010228
+"id";"active";"name";"surname";"mobile";"gender";"dob";"address";"city";"marital_status";"siblings";"email";"password";"deceased";"deceased_date";"photo";"general_practitioner";"managed_organization";"communitcation"
+"0123443M";1;"Mary ann";"Spiteri";79272874;"Female";"1947-06-02";"32, Triq Tal-Qasam, MST 1022";"Mosta";"Married";0;"mary.ann.spiteri3@example.net";"abcD12345%";0;"";"";0;"";"English"
+"0123447M";0;"Mary ann";"Spiteri";79121212;"Male";"1947-06-02";"32, Triq Tal-Qasam, MST 1022";"Mosta";"Married";0;"mary.ann.spiteri@example.net";"abcD12345%";0;"";"";0;"";"English"
+"0123448M";1;"George";"Fenech";79259330;"Male";"1948-02-02";"32, TRIQ Gio Felice Inglott, PMK 1133";"Pembroke";"Single";1;"george.fenech@example.net";"abcd12345%";0;"";"";0;"";"English"
+"0123456M";1;"Mary";"Tanti";79121213;"Female";"1956-07-23";"32, TRIQ SANT' ANDRIJA, LJA 1520";"Lija";"Divorced";1;"mary.borg@example.net";"b58505b13a76c9";0;"";"";0;"";"English"
+"0123479M";1;"Paul";"Mifsud";79759427;"Male";"1979-10-10";"12, TRIQ WIGI ROSATO,  BML 1843";"Bormla";"Domestic Partnership";0;"paul.mifsud@example.net";"53337a87131d25";0;"";"";0;"";"English"
+"0123498G";1;"Matthew";"Sultana";79864540;"Male";"1998-11-11";"34, TRIQ SANTA TEODORA, XWK 2222";"IX-XEWKIJA";"Single";0;"msult@example.com";"6c83fda2522643";0;"";"";0;"";"English"
+"2362805L";1;"Tony";"Cassar";99010228;"Male";"2005-12-04";"54, TRIQ MANWEL VITALE, RBT 1686";"IR-RABAT";"Single";1;"ton50@example.com";"f2c8dd1a27811d";0;"";"";0;"";"English"

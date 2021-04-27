@@ -19,10 +19,12 @@ def create_app():
     from be.views.patient_view import patients_view
     from be.views.login_view import login_view
     from be.views.results_view import results_view
+    from be.views.nok_view import next_of_ken_view
 
     #register view blueprints
     app.register_blueprint(patients_view)
     app.register_blueprint(login_view)
     app.register_blueprint(results_view)
+    app.register_blueprint(next_of_ken_view)
     
     return app

@@ -9,5 +9,5 @@ CREATE TABLE `results` (
   `remarks` mediumtext,
   PRIMARY KEY (`resultNo`),
   KEY `patientID_idx` (`patientId`),
-  CONSTRAINT `patientID` FOREIGN KEY (`patientId`) REFERENCES `patient` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=ascii;
+  CONSTRAINT `patientId` FOREIGN KEY (`patientId`) REFERENCES `patients` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=ascii;

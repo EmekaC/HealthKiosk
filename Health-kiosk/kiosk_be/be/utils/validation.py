@@ -63,6 +63,13 @@ def validateMartialStatus(status):
     else:
         return False
     
+def validateRelationship(relation):
+    relations=['mother','father','parent','brother','sister','son','daughter','child','friend','spouse','partner','family member','carer','social worker','guardian','other']
+    if validateString(relation) and (relation in relations):
+       return True
+    else:
+        return False
+    
 def validateTemperature(temperature):
     if re.match("^(\d{2}|\d{0,5}\.\d{1,2})$",str(temperature)):
         return True
@@ -95,4 +102,5 @@ def validateDateTimestamp(date):
         return True
     except ValueError:
         return False
+    
     

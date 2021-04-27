@@ -1,7 +1,9 @@
 import datetime
 from flask import current_app
 from be import db, ma
-from be.models.results import Results
+from flask_marshmallow.fields import fields
+from be.models.results import Results,ResultsSchema
+from be.models.nok import Nextofken,NOKSchema
 
 #Patient table model
 class Patients(db.Model):
@@ -24,10 +26,8 @@ class Patients(db.Model):
     general_practitioner = db.Column(db.Integer, nullable=True)
     managed_organization = db.Column(db.String(45), nullable=True)
     communitcation = db.Column(db.Enum('English','Maltese','Italian','French'),nullable=False, default='English')
-    
-    
-    
-    #results = db.relationship('Results', backref='patient')
+    next_of_ken = db.relationship('Nextofken',backref='patient', uselist=False)
+    results = db.relationship('Results', backref='patient')
 
     #Create new Patient object
     def __init__ (self,id,name ,surname ,mobile ,gender ,dob ,address ,city ,marital_status ,siblings ,email, password): 
@@ -54,9 +54,12 @@ class Patients(db.Model):
     
 #Patient schema in order to serialize record
 class PatientsSchema(ma.Schema):
+    next_of_ken = fields.Nested(NOKSchema)
+    results = fields.List(fields.Nested(ResultsSchema))
     class Meta:
-        fields = ('id', 'name', 'surname', 'mobile', 'gender', 'dob', 'address', 'city','marital_status','siblings','email','general_practitioner','communitcation')
+        fields = ('id', 'name', 'surname', 'mobile', 'gender', 'dob', 'address', 'city','marital_status','siblings','email','general_practitioner','communitcation','next_of_ken','results')
         ordered = True
+        
 
 # Methods used to serialise/deserialise db rows
 patient_share_schema = PatientsSchema()
