@@ -1,4 +1,4 @@
-CREATE TABLE `patients` (
+CREATE TABLE `health-kiosk`.`patients` (
   `id` varchar(8) NOT NULL,
   `active` tinyint NOT NULL DEFAULT '1',
   `name` varchar(45) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE `patients` (
   `deceased` tinyint NOT NULL DEFAULT '0',
   `deceased_date` datetime DEFAULT NULL,
   `photo` longblob,
-  `general_practitioner` int DEFAULT NULL,
+  `general_practitioner` int NOT NULL,
   `managed_organization` varchar(45) DEFAULT NULL,
   `communitcation` enum('English','Maltese','Italian','French') NOT NULL DEFAULT 'English',
   PRIMARY KEY (`id`),
@@ -23,7 +23,6 @@ CREATE TABLE `patients` (
   UNIQUE KEY `email_UNIQUE` (`email`),
   UNIQUE KEY `mobile_UNIQUE` (`mobile`),
   KEY `doctor_idx` (`general_practitioner`),
-  CONSTRAINT `doctor` FOREIGN KEY (`general_practitioner`) REFERENCES `doctor` (`doctorId`),
+  CONSTRAINT `doctor` FOREIGN KEY (`general_practitioner`) REFERENCES `doctor` (`id`),
   CONSTRAINT `ifDeceased` CHECK ((((`deceased` = 1) and (`deceased_date` is not null)) or ((`deceased` = 0) and (`deceased_date` is null))))
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
-SELECT * FROM `health-kiosk`.patients;
