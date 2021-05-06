@@ -9,6 +9,18 @@ def validateString(value):
         return False
 
 
+def validateAddress(value):
+    if re.match("^\d+\,\s?[A-z \s\-\']+\,+\s?[A-Z]{3}\s\d{4}$",value):
+        return True
+    else:
+        return False
+
+def validateCity(value):
+    if re.match("^[A-z \-\']+\s?$",value):
+        return True
+    else:
+        return False
+    
 def validateEmail(email):
     if re.match("(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)",email):
         return True
@@ -44,7 +56,7 @@ def validateId(id):
         return False
     
 def validateSiblings(sib):
-    if re.match("^[0-1]$",sib):
+    if re.match("^[0-1]$",str(sib)):
         return True
     else:
         return False
@@ -64,7 +76,7 @@ def validateMartialStatus(status):
         return False
     
 def validateRelationship(relation):
-    relations=['mother','father','parent','brother','sister','son','daughter','child','friend','spouse','partner','family member','carer','social worker','guardian','other']
+    relations=['Mother','Father','Parent','Brother','Sister','Son','Daughter','Child','Friend','Spouse','Partner','Family member','Carer','Social worker','Guardian','Other']
     if validateString(relation) and (relation in relations):
        return True
     else:

@@ -40,22 +40,22 @@ def getPatient(patientId):
 
 
 # add new patient -> register
-def createPatient(patientId,name,surname,mobile,gender,dob,address,city,marital_status,siblings,email,password):
+def createPatient(patientId,name,surname,mobile,gender,dob,address,city,marital_status,siblings,email,password,doctor_id):
     print("Create patient")
     validation = (
                     validateId(patientId) and validateString(name) 
                     and validateString(surname) and validateDOB(dob) 
                     and validateEmail(email) and validatePassword(password) 
-                    and validateString(city) and validateMobile(mobile) 
-                    and validateGender(gender) and validateMartialStatus(marital_status)
-                    and validateSiblings(siblings)
+                    and validateAddress(address) and validateCity(city)  
+                    and validateMobile(mobile) and validateGender(gender) 
+                    and validateMartialStatus(marital_status) and validateSiblings(siblings)
                 )       
     
     if validation:
             if Patients.query.filter_by(id=patientId).first():
                 return "Patient already exists"
             else :
-                newPatient = Patients(patientId,name,surname,mobile,gender,dob,address,city,marital_status,siblings,email,password)
+                newPatient = Patients(patientId,name,surname,mobile,gender,dob,address,city,marital_status,siblings,email,password,doctor_id)
                 try: 
                     db.session.add(newPatient)
                     db.session.commit()
@@ -77,7 +77,9 @@ def createPatient(patientId,name,surname,mobile,gender,dob,address,city,marital_
             return "Invalid email"
         elif not validatePassword(password):
             return "Invalid password"
-        elif not validateString(city):
+        elif not validateAddress(address):
+            return "Invalid address"
+        elif not validateCity(city):
             return "Invalid city"
         elif not validateGender(gender):
             return "Invalid gender"
@@ -129,9 +131,12 @@ def updatePatient(patientId,key,value):
             else:
                 return "Invalid email"
         elif key == 'address':
-            updatePatient.address = value
+            if validateAddress(value):
+                updatePatient.address = value
+            else:
+                return "Invalid address"
         elif key == 'city':
-            if validateString(value):
+            if validateCity(value):
                 updatePatient.city = value
             else:
                 return "Invalid city"

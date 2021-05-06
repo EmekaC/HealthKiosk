@@ -53,8 +53,9 @@ def createPat():
         siblings = data['siblings']
         email = data['email']
         password =data['password']
+        doctor_id = data['doctor']
         
-        status = createPatient(id,name,surname,mobile,gender,dob,address,city,marital_status,siblings,email,password)
+        status = createPatient(id,name,surname,mobile,gender,dob,address,city,marital_status,siblings,email,password,doctor_id)
     except Exception as error:
         return jsonify({'result': error }),400
     
@@ -64,7 +65,7 @@ def createPat():
         return jsonify({'result': status}),422
 
 
-# Delete patient account
+# Delete patient account (set patient to deactive)
 @patients_view.route("/api/patients/delete/<id>",methods=["DELETE"])
 @token_required
 def deletePat(current_user,id):

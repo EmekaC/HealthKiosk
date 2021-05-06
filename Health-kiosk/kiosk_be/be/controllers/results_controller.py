@@ -18,7 +18,7 @@ def getPatientResults(patientId):
         results = Results.query.filter_by(patientId=patientId).order_by(Results.taken_on).all()
         return results_share_schema.dump(results)
     else:
-        return False
+        return "Invalid id card"
 
 # add a new result record   
 def addResult(temperature, weight, bloodOx, heartRate, patientId):

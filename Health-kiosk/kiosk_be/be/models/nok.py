@@ -3,10 +3,10 @@ from flask import current_app
 from be import db, ma
 
 
-#Patient table model
+#Next of kin table model
 class Nextofken(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
-    relationship = db.Column(db.Enum('mother','father','parent','brother','sister','son','daughter','child','friend','spouse','partner','family member','carer','social worker','guardian','other'),nullable=False)
+    relationship = db.Column(db.Enum('Mother','Father','Parent','Brother','Sister','Son','Daughter','Child','Friend','Spouse','Partner','Family member','Carer','Social worker','Guardian','Other'),nullable=False)
     patient_id = db.Column(db.String(8), db.ForeignKey('patients.id'),nullable=False, unique=True)
     name = db.Column(db.String(45), nullable=False)
     surname = db.Column(db.String(45), nullable=False)
@@ -30,7 +30,7 @@ class Nextofken(db.Model):
         
         
     
-#Next of Ken schema in order to serialize record
+#Next of Kin schema in order to serialize record
 class NOKSchema(ma.Schema):
     class Meta:
         fields = ( 'relationship', 'name', 'surname', 'mobile', 'gender', 'address','city','contact_hrs')

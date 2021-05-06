@@ -13,7 +13,7 @@ def getAllNOKs():
 def getPatientNok(patientId):
     print("Get next of kin of a  patient")
     if validateId(patientId):
-        nok = Nextofken.query.filter_by(patientId=patientId)
+        nok = Nextofken.query.filter_by(patient_id=patientId).first_or_404(description='There is no record of pattient with id {}'.format(patientId))
         return nok_share_schema.dump(nok)
     else:
         return False
@@ -26,10 +26,10 @@ def addNextOfKen(relationship,name,surname,mobile,gender,address,city,contact_hr
     validation = ( 
                    validateRelationship(relationship) and validateString(name) 
                     and validateString(surname) and validateMobile(mobile) 
-                    and  validateGender(gender) and validateString(city)
-                    and  validateId(patientId) 
+                    and  validateGender(gender) and validateAddress(address)
+                    and validateCity(city) and  validateId(patientId) 
                  )
-    print(validation)
+    
     if validation:
         nok = Nextofken(relationship,name,surname,mobile,gender,address,city,patientId,contact_hrs)
         try: 
@@ -53,6 +53,8 @@ def addNextOfKen(relationship,name,surname,mobile,gender,address,city,contact_hr
             return "Invalid mobile"
         elif not validateGender(gender):
             return "Invalid gender"
+        elif not validateAddress(address):
+            return "Invalid address"
         else:
             return "Invalid city"
         
