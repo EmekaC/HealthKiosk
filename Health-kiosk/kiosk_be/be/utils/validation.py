@@ -1,6 +1,11 @@
 import re, datetime
 
 # Validation methods for inputs received before placing them in db
+genders = ['Male','Female','Other']
+statuses = ['Single','Married','Domestic Partnership','Divorced']
+relations=['Mother','Father','Parent','Brother','Sister','Son','Daughter','Child','Friend','Spouse','Partner','Family member','Carer','Social worker','Guardian','Other']
+communications = ['English','Maltese','Italian','French']
+
 
 def validateString(value):
     if re.match("^[a-zA-Z ]*$",value):
@@ -62,23 +67,26 @@ def validateSiblings(sib):
         return False
     
 def validateGender(gender):
-    genders = ['Male','Female','Other']
     if validateString(gender) and (gender in genders):
        return True
     else:
         return False
 
 def validateMartialStatus(status):
-    statuses = ['Single','Married','Domestic Partnership','Divorced']
     if validateString(status) and (status in statuses):
        return True
     else:
         return False
     
 def validateRelationship(relation):
-    relations=['Mother','Father','Parent','Brother','Sister','Son','Daughter','Child','Friend','Spouse','Partner','Family member','Carer','Social worker','Guardian','Other']
     if validateString(relation) and (relation in relations):
        return True
+    else:
+        return False
+    
+def validateCommunication(communication):
+    if validateString(relation) and (communication in communications):
+        return True
     else:
         return False
     
