@@ -21,7 +21,7 @@ class Patients(db.Model):
     marital_status = db.Column(db.Enum('Single','Married','Domestic Partnership','Divorced'),nullable=False)
     siblings = db.Column(db.Boolean, default='0', nullable=False)
     email = db.Column(db.String(120), nullable=False, unique=True)
-    password = db.Column(db.String(14), nullable=False)
+    password = db.Column(db.String(200), nullable=False)
     deceased = db.Column(db.Boolean, default='0', nullable=False)
     deceased_date = db.Column(db.DateTime, nullable=True)
     photo = db.Column(db.LargeBinary(length=(2**32)-1), nullable=True)

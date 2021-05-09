@@ -22,6 +22,7 @@ from be.views.results_view import results_view
 from be.views.nok_view import next_of_ken_view
 from be.views.doctors_view import doctor_view
 from be.views.selections_view import selections_view
+from be.views.heart_view import heart_view
 
 #register view blueprints
 app.register_blueprint(patients_view)
@@ -30,5 +31,5 @@ app.register_blueprint(results_view)
 app.register_blueprint(next_of_ken_view)
 app.register_blueprint(doctor_view)
 app.register_blueprint(selections_view)
+app.register_blueprint(heart_view)
     
-

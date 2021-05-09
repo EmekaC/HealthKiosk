@@ -9,9 +9,8 @@ import jwt, datetime, datedelta
 def login(userId, userPass, rem=False):
     print("Login in -> Generating new token")
     patient = getPatient(userId)
-    password = generate_password_hash(patient.password)
-
-    if  patient and check_password_hash(password,userPass):
+    
+    if  patient and check_password_hash(patient.password,userPass):
         
         if rem == True:
             token = jwt.encode({'id' : patient.id, 'exp' : datetime.datetime.utcnow() + datedelta.datedelta(months=1)}, app.config['SECRET_KEY'],algorithm="HS512")

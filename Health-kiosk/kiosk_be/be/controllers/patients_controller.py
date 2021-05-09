@@ -1,5 +1,6 @@
 from be import db
 from be.models.patient import Patients, patient_share_schema, patients_share_schema
+from werkzeug.security import generate_password_hash
 from be.utils.validation import *
 
 #get all registered patients in database
@@ -55,7 +56,7 @@ def createPatient(patientId,name,surname,mobile,gender,dob,address,city,marital_
             if Patients.query.filter_by(id=patientId).first():
                 return "Patient already exists"
             else :
-                newPatient = Patients(patientId,name,surname,mobile,gender,dob,address,city,marital_status,siblings,email,password,doctor_id)
+                newPatient = Patients(patientId,name,surname,mobile,gender,dob,address,city,marital_status,siblings,email,generate_password_hash(password),doctor_id)
                 try: 
                     db.session.add(newPatient)
                     db.session.commit()
