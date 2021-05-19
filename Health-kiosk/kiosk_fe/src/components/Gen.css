@@ -20,22 +20,6 @@ html {
     -webkit-text-stroke: 2px rgb(0, 0, 0);  
 }
 
-.result{
-    background: whitesmoke;
-    border: 5px solid gray;
-    font-size: 50pt;
-    
-
-    text-align: center;
-    
-
-    
-    width: 100%;
-    
-    color: #1eb87f;
-    -webkit-text-stroke: 2px rgb(0, 0, 0);  
-}
-
 .footer {
     background-color: whitesmoke;
     border: 5px solid gray;
@@ -44,9 +28,20 @@ html {
     position: absolute;
     left: 0;
     bottom: 0;
-    
     overflow:hidden;
 }
+
+.result{
+    background: whitesmoke;
+    border: 5px solid gray;
+    font-size: 50pt;
+    text-align: center;   
+    width: 100%;   
+    color: #1eb87f;
+    -webkit-text-stroke: 2px rgb(0, 0, 0);  
+}
+
+
 
 form{
 
@@ -67,7 +62,7 @@ label{
 
 input {
   display: inline-block;
-  width:700px;
+  width:500px;
   font-size:40px;
   margin:5px 0px 15px 0px;
   

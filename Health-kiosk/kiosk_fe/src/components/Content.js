@@ -17,7 +17,7 @@ function Content() {
             </form>
 
             <div className="footer">
-            <Link to={'./signUp'}><Button className='btn' buttonStyle='btn-outline' buttonSize='btn-large'>New Account</Button></Link>
+            <Link to={'./signUp'}><Button className='btn' buttonStyle='btn-acc' buttonSize='btn-large'>New Account</Button></Link>
             <Link to={'./measurements'}><Button className='btn' buttonStyle='btn-login' buttonSize='btn-large'>Login</Button></Link>
             </div>
             

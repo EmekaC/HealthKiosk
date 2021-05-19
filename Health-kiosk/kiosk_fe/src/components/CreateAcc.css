@@ -4,12 +4,25 @@ form {
   
 }
 
-input{
+.submitbtn{
+  font-size: 40pt;
+  background-color: #1eb87f;
+  color: #fff;
   display: block;   
   border:solid 2px black;
   width: fit-content;
   float: right;
+  margin-right: 10%;
   
+}
+
+
+select{
+  
+    display: block;   
+    border:solid 2px black;
+    float: right;
+
 }
 
 
@@ -24,12 +37,12 @@ h1{
 }
     
 .patient{
-    font-size: 40px;
+    font-size: 30px;
     background-color: whitesmoke;
     padding : 20px 20px;
     display: grid;
     grid-template-columns: auto auto auto auto ;
-    grid-gap: 20px;
+    grid-gap: 10px;
     border-style: double;
     border-width: 10px;
     
