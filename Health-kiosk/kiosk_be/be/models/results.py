@@ -7,7 +7,7 @@ from be import db, ma
 class Results(db.Model):
     resultNo = db.Column(db.Integer, primary_key=True, autoincrement=True)
     temperature = db.Column(db.Numeric(4,2), nullable=False)
-    weight = db.Column(db.Numeric(4,2), nullable=False)
+    weight = db.Column(db.Numeric(4,2), default='0.00',nullable=False)
     bloodOx = db.Column(db.Integer, nullable=False)
     heartRate = db.Column(db.Integer, nullable=False)
     taken_on = db.Column(db.DateTime, nullable=False)
@@ -17,7 +17,7 @@ class Results(db.Model):
     #Create new Results object
     def __init__(self,temperature,weight,bloodOx,heartRate,patientId):
         self.temperature = temperature
-        self.weight = weight
+        self.weight = 0.00
         self.bloodOx = bloodOx
         self.heartRate = heartRate
         self.taken_on = datetime.datetime.now()

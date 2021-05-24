@@ -103,8 +103,8 @@ def validateWeight(weight):
         return False 
 
 def validateHeartPulse(pulse):
-    #range 60 - 210
-    if re.match("^([6-9][0-9]|1[01]?[0-9][0-9]?|2[01][0])$",str(pulse)):
+    #range 50 - 210
+    if re.match("^([5-9][0-9]|1[01]?[0-9][0-9]?|2[01][0])$",str(pulse)):
         return True
     else:
         return False 
