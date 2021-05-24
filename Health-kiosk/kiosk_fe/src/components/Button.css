@@ -10,15 +10,17 @@
 }
  
 
-.btn-outline{
-    font-size: 40pt;
-    background-color: #1eb87f;
+.btn-cell{
+    font-size: 30pt;
+    background-color: var(--primary);
     color: #fff;
-    padding: 8px 20px;
+    padding: 20px 20px;
     border-color: var(--secondary);
     transition: all 0.3s ease-out;
     margin-left: 10%;  
-    float:left;
+    padding: 20px 50px 50px 50px;
+    text-align: center;
+    
 }
 
 .btn-login{
@@ -36,14 +38,13 @@
 
 .btn-acc{
     font-size: 40pt;
-    background-color: #1eb87f;
+    background-color: var(--primary);
     color: #fff;
-    padding: 80px 20px;
-    border: 1px solid var(--primary);
+    padding: 8px 20px;
+    border-color: var(--secondary);
     transition: all 0.3s ease-out;
-    margin-left: 10%;
-    position: left;
-    float: left;
+    margin-left: 10%;  
+    float:left;
     
 }
 

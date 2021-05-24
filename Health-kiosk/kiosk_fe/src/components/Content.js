@@ -29,10 +29,6 @@ function Content() {
     return (
         <div>
 
-            <div className="banner">
-                <img src="/images/Banner.png" />
-            </div>
-
             <form>
                 <label for="email"><b>ID: </b></label>
                 <input type="text" name="id" required value={id} onChange={e => setID(e.target.value)}></input>
@@ -45,7 +41,7 @@ function Content() {
 
 
             <div className="footer">
-                <Link to={'./signUp'}><Button className='btn' buttonStyle='btn-outline' buttonSize='btn-large'>New Account</Button></Link>
+                <Link to={'./signUp'}><Button className='btn' buttonStyle='btn-acc' buttonSize='btn-large'>New Account</Button></Link>
                 <Button className='btn' buttonStyle='btn-login' buttonSize='btn-large' onClick={async () => {
             
             const response = await fetch("api/login", {
@@ -75,7 +71,7 @@ function Content() {
             window.location.href = "./pats";
           }}>Login</Button>
             </div>
-
+            
         </div>
 
     )
