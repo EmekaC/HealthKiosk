@@ -1,8 +1,8 @@
-from be import create_app
+from be import app
 from dotenv import load_dotenv
 
 load_dotenv('.env')
-app = create_app()
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')

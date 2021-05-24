@@ -1,6 +1,11 @@
 import re, datetime
 
 # Validation methods for inputs received before placing them in db
+genders = ['Male','Female','Other']
+statuses = ['Single','Married','Domestic Partnership','Divorced']
+relations=['Mother','Father','Parent','Brother','Sister','Son','Daughter','Child','Friend','Spouse','Partner','Family member','Carer','Social worker','Guardian','Other']
+communications = ['English','Maltese','Italian','French']
+
 
 def validateString(value):
     if re.match("^[a-zA-Z ]*$",value):
@@ -9,6 +14,18 @@ def validateString(value):
         return False
 
 
+def validateAddress(value):
+    if re.match("^\d+\,\s?[A-z \s\-\']+\,+\s?[A-Z]{3}\s\d{4}$",value):
+        return True
+    else:
+        return False
+
+def validateCity(value):
+    if re.match("^[A-z \-\']+\s?$",value):
+        return True
+    else:
+        return False
+    
 def validateEmail(email):
     if re.match("(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)",email):
         return True
@@ -43,6 +60,36 @@ def validateId(id):
     else:
         return False
     
+def validateSiblings(sib):
+    if re.match("^[0-1]$",str(sib)):
+        return True
+    else:
+        return False
+    
+def validateGender(gender):
+    if validateString(gender) and (gender in genders):
+       return True
+    else:
+        return False
+
+def validateMartialStatus(status):
+    if validateString(status) and (status in statuses):
+       return True
+    else:
+        return False
+    
+def validateRelationship(relation):
+    if validateString(relation) and (relation in relations):
+       return True
+    else:
+        return False
+    
+def validateCommunication(communication):
+    if validateString(relation) and (communication in communications):
+        return True
+    else:
+        return False
+    
 def validateTemperature(temperature):
     if re.match("^(\d{2}|\d{0,5}\.\d{1,2})$",str(temperature)):
         return True
@@ -56,8 +103,8 @@ def validateWeight(weight):
         return False 
 
 def validateHeartPulse(pulse):
-    #range 60 - 210
-    if re.match("^([6-9][0-9]|1[01]?[0-9][0-9]?|2[01][0])$",str(pulse)):
+    #range 50 - 210
+    if re.match("^([5-9][0-9]|1[01]?[0-9][0-9]?|2[01][0])$",str(pulse)):
         return True
     else:
         return False 
@@ -75,4 +122,5 @@ def validateDateTimestamp(date):
         return True
     except ValueError:
         return False
+    
     
