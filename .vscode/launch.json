@@ -5,19 +5,27 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Flask",
-            "type": "python",
+            "type": "chrome",
             "request": "launch",
-            "module": "flask",
-            "env": {
-                "FLASK_APP": "Health-kiosk/kiosk_be/be",
-                "FLASK_ENV": "development"
-            },
-            "args": [
-                "run",
-                "--no-debugger"
-            ],
-            "jinja": true
-        }
-    ]
+            "name": "Launch Chrome",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}/kiosk_fe/src"
+        },
+   
+            {
+                "name": "Python: Flask",
+                "type": "python",
+                "request": "launch",
+                "module": "flask",
+                "env": {
+                    "FLASK_APP": "Health-kiosk/kiosk_be/be",
+                    "FLASK_ENV": "development"
+                },
+                "args": [
+                    "run",
+                    "--no-debugger"
+                ],
+                "jinja": true
+            }
+        ]
 }

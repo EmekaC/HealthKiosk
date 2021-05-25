@@ -5,7 +5,7 @@ import time
 
 
 #get results
-def getData():
+def getTestData():
     print("Geting current results")
     hearts = Heart.query.order_by(Heart.id.desc()).first()
     if not hearts:
@@ -14,7 +14,7 @@ def getData():
         return heart_share_schema.dump(hearts)
     
     
-def startReading():
+def startTestReading():
     print("Starting readings")
     for i in range(20):
         hb = randrange(50,200,1)
@@ -26,7 +26,7 @@ def startReading():
     print("end")
     return heart_share_schema.dump(newResult)
    
-def deleteData():
+def deleteTestData():
     print("Deleting data")
     Heart.query.delete()
     db.session.commit()

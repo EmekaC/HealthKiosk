@@ -22,6 +22,7 @@ function Patients() {
           }
         )
   }, []);
+  function Hello(){}
     return (
         <div>
           <h1>Token patient id: {sessionStorage.getItem('id')}</h1>

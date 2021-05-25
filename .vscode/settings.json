@@ -2,5 +2,4 @@
     "python.pythonPath": "/Users/samiracachiaspiteri/Documents/HealthKiosk/Health-kiosk/kiosk_be/venv/bin/python3.9",
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
-    "python.languageServer": "None"
 }

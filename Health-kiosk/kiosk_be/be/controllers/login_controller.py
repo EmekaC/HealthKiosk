@@ -15,7 +15,7 @@ def login(userId, userPass, rem=False):
         if rem == True:
             token = jwt.encode({'id' : patient.id, 'exp' : datetime.datetime.utcnow() + datedelta.datedelta(months=1)}, app.config['SECRET_KEY'],algorithm="HS512")
         else:
-            token = jwt.encode({'id' : patient.id, 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=5)},app.config['SECRET_KEY'],algorithm="HS512")
+            token = jwt.encode({'id' : patient.id, 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=10)},app.config['SECRET_KEY'],algorithm="HS512")
         
         return token
 

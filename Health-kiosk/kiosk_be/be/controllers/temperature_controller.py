@@ -21,7 +21,7 @@ def startTempreture():
     mlx = adafruit_mlx90614.MLX90614(i2c)
 
     print("Starting reading")
-    while not (time.time() > timeout)::
+    while not (time.time() > timeout):
         roomTemp = "{:.2f}".format(mlx.ambient_temperature)
         bodyTemp = "{:.2f}".format(mlx.object_temperature)
         newResult = Temp(bodyTemp)

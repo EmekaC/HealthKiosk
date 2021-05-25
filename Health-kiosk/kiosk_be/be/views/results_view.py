@@ -30,7 +30,7 @@ def addPatientResult(current_user):
     try:
         patientId = data['id']
         temperature = data['temperature']
-        weight = data['weight']
+        weight = float(data['weight'])
         bloodOx = data['bloodOx']
         heartRate = data['heartRate']
         status = addResult(temperature,weight,bloodOx,heartRate,patientId)

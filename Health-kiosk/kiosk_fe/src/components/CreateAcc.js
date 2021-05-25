@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState} from 'react';
 import { Button } from './Button';
 import './CreateAcc.css';
 import { Link } from "react-router-dom";
@@ -6,42 +6,136 @@ import Select from 'react-select';
 import axios from 'axios';
 
 
-export default class CreateAcc extends Component {
+function CreateAcc() {
+    //States
+    //Patient Info
+    const [patId ,setPatId] = useState("");
+    const [patName, setpatName] = useState("");
+    const [patSurname, setpatSurname] = useState("");
+    const [patMobile, setpatMobile] = useState();
+    const [patGender, setpatGender] = useState("");
+    const [patDOB, setpatDOB] = useState([]);
+    const [patAddress, setpatAddress] = useState("");
+    const [patCity, setpatCity] = useState("");
+    const [patStatus, setpatStatus] = useState("");
+    const [patSiblings, setpatSiblings] = useState("");
+    const [patEmail, setpatEmail] = useState("");
+    const [patPassword, setpatPassword] = useState("");
+    const [patDoc, setpatDoc] = useState();
+    
+    //Next of Kin Info
+    const [nokRelationship, setnokRelationship] = useState("");
+    const [nokName, setnokName] = useState("");
+    const [nokSurname, setnokSurname] = useState("");
+    const [nokMobile, setnokMobile] = useState();
+    const [nokGender, setnokGender] = useState("");
+    const [nokAddress, setnokAddress] = useState("");
+    const [nokCity, setnokCity] = useState("");
+    const [nokContactHrs, setnokContactHrs] = useState("");
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            selectOptions: [],
-            id: "",
-            name: ''
-        }
+    //Selections
+    const [doctors, setDoctor] = useState([])
+    const [relationships, setRelationship] = useState([])
+    const [genders, setGender] = useState([])
+    const [statues, setStatus] = useState([])
+
+    async function CreatePatient(){
+        await fetch("api/patients/create", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+              },
+            body: JSON.stringify({
+                "id": patId, 
+                "name": patName, 
+                "surname": patSurname,
+                "mobile": Number(patMobile),
+                "gender": patGender, 
+                "dob": patDOB,
+                "address": patAddress, 
+                "city": patCity,
+                "marital_status" : patStatus,
+                "siblings": Number(patSiblings),
+                "email": patEmail, 
+                "password": patPassword ,
+                "doctor": patDoc
+            }),
+        }).then((response) => response.json())
+        .then((responseData) => {
+          console.log(responseData);
+          return CreateNOK();
+        })
+        .catch(error => console.warn(error));
+      
     }
 
-    async getOptions() {
-        const res = await axios.get('https://jsonplaceholder.typicode.com/users')
-        const data = res.data
+    async function CreateNOK(){
+        await fetch("api/noks/create", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+              },
+            body: JSON.stringify({
+                "relationship": nokRelationship,
+                "name": nokName,
+                "surname": nokSurname,
+                "mobile": Number(nokMobile),
+                "gender": nokGender,
+                "address": nokAddress,
+                "city" : nokCity,
+                "contact_hrs" : nokContactHrs,
+                "patientId": patId
+            }),
+        }).then((response) => response.json())
+        .then((responseData) => {
+          console.log(responseData);
+          return responseData
+        })
+        .catch(error => console.warn(error));
+    }
 
-        const options = data.map(d => ({
+
+    async function getSelections(){
+        const docs = await axios.get('api/docs')
+        const relations = await axios.get('api/relationships')
+        const genders =  await axios.get('api/genders')
+        const statuses =  await axios.get('api/status')
+        const doctors = docs.data.doctors
+        const relationships = relations.data.relationships
+        const gender = genders.data.genders
+        const status = statuses.data.status
+
+        const doctor = doctors.map(d => ({
             "value": d.id,
-            "label": d.name
+            "label": "Dr. "+d.name +" "+ d.surname
 
         }))
 
-        this.setState({ selectOptions: options })
+        const relationship = relationships.map(d => ({
+            "label": d
+        }))
 
-    }
-    handleChange(e) {
-        this.setState({ id: e.value, name: e.label })
-    }
+        const gen = gender.map(d => ({
+            "label": d
+        }))
 
-    componentDidMount() {
-        this.getOptions()
-    }
+        const stat = status.map(d => ({
+            "label": d
+        }))
 
-    render() {
-        console.log(this.state.selectOptions)
-        return(
+        setDoctor(doctor)
+        setRelationship(relationship)
+        setGender(gen)
+        setStatus(stat)
+    }    
+    
+    useEffect(() => {
+        getSelections();
+    }, []);
+
+    return (
         <div >
+            <p>{console.log("Patient Records: Id: %s,\n Name: %s,\n Surname: %s,\n Mobile: %s,\nGender: %s, dob: %s, Doctor: %s ",patId,patName,patSurname,patMobile,patGender,patDOB,patDoc)}</p>
             <div className='title'>New Account Creation</div>
             <br></br>
             <form name='patient'>
@@ -50,100 +144,97 @@ export default class CreateAcc extends Component {
 
 
                     <label for="id"><b>ID Number</b></label>
-                    <input type="text" name="id" required></input>
+                    <input type="text" name="id" required value={patId} onChange={e => setPatId(e.target.value)}></input>
 
                     <label for="name"><b>Name</b></label>
-                    <input type="text" name="name" required></input>
+                    <input type="text" name="name" required value={patName} onChange={e => setpatName(e.target.value)}></input>
 
                     <label for="surname"><b>Surname</b></label>
-                    <input type="text" name="surname" required></input>
+                    <input type="text" name="surname" required value={patSurname} onChange={e => setpatSurname(e.target.value)}></input>
 
                     <label for="mobile"><b>Mobile</b></label>
-                    <input type="text" name="mobile" required></input>
+                    <input type="text" name="mobile" required value={patMobile} onChange={e => setpatMobile(e.target.value)}></input>
 
                     <label for="gender"><b>Gender</b></label>
-                    <select >
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
-                        </select>
+                    <Select options={genders} onChange={e => setpatGender(e.label)} />
 
                     <label width="20px" for="dob"><b>Date of Birth</b></label>
-                    <input type="date" required></input>
+                    <input type="date" required value={patDOB} onChange={e => setpatDOB(e.target.value)}></input>
 
                     <label for="address"><b>Address</b></label>
-                    <input type="text" name="address" required></input>
+                    <input type="text" name="address" required value={patAddress} onChange={e => setpatAddress(e.target.value)}></input>
 
                     <label for="city"><b>City</b></label>
-                    <input type="text" name="city" required></input>
+                    <input type="text" name="city" required value={patCity} onChange={e => setpatCity(e.target.value)}></input>
 
                     <label for="married"><b>Marital status</b></label>
-                    <input type="text" name="married" required></input>
+                    <Select options={statues} onChange={e => setpatStatus(e.label)} />
 
                     <label for="siblings"><b>Siblings</b></label>
                     <div id="siblings" name="siblings">
 
-                    <input type="radio" id="yes" name="siblings" value="yes"></input>
+
+                    <input type="radio" id="yes" name="siblings" value="1" onChange={e => setpatSiblings(e.target.value)}></input>
                     <label for="yes">Yes</label><br></br>
-                    <input type="radio" id="no" name="siblings" value="no"></input>
+                    <input type="radio" id="no" name="siblings" value="0" onChange={e => setpatSiblings(e.target.value)}></input>
                     <label for="female">no</label><br></br>
                     </div>
 
 
 
                     <label for="email"><b>Email</b></label>
-                    <input type="email" name="email" required></input>
+                    <input type="email" name="email" required value={patEmail} onChange={e => setpatEmail(e.target.value)}></input>
 
                     <label for="password"><b>Password</b></label>
-                    <input type="password" name="password" required></input>
+                    <input type="password" name="password" required value={patPassword} onChange={e => setpatPassword(e.target.value)}></input>
 
                     <label for="doc"><b>Doctor</b></label>
-                    <Select options={this.state.selectOptions} onChange={this.handleChange.bind(this)} />
+                    <Select options={doctors} onChange={e => setpatDoc(e.value)} />
 
                 </div>
                 <br></br>
                 <h1>Contact Details</h1>
                 <div className="contact">
                     <label for="realtion"><b>Relationship</b></label>
-                    <input type="text" name="realtion" required></input>
+                    <Select options={relationships} onChange={e => setnokRelationship(e.label)} />
+                    
 
                     <label for="name"><b>Name</b></label>
-                    <input type="text" name="name" required></input>
+                    <input type="text" name="name" required value={nokName} onChange={e => setnokName(e.target.value)}></input>
 
                     <label for="surname"><b>Surname</b></label>
-                    <input type="text" name="surname" required></input>
+                    <input type="text" name="surname" required value={nokSurname} onChange={e => setnokSurname(e.target.value)}></input>
 
                     <label for="mobile"><b>Mobile</b></label>
-                    <input type="tel" name="mobile" required></input>
+                    <input type="tel" name="mobile" required value={nokMobile} onChange={e => setnokMobile(e.target.value)}></input>
 
                     <label for="gender"><b>Gender</b></label>
-                    <input type="text" name="gender" required></input>
+                    <Select options={genders} required onChange={e => setnokGender(e.label)} />
 
                     <label for="address"><b>Address</b></label>
-                    <input type="text" name="address" required></input>
+                    <input type="text" name="address" required value={nokAddress} onChange={e => setnokAddress(e.target.value)}></input>
 
                     <label for="city"><b>City</b></label>
-                    <input type="text" name="city" required></input>
+                    <input type="text" name="city" required value={nokCity} onChange={e => setnokCity(e.target.value)}></input>
 
                     <label for="contactHrs"><b>Contact Hours</b></label>
-                    <input type="text" name="contactHrs"></input>
+                    <input type="text" name="contactHrs" value={nokContactHrs} onChange={e => setnokContactHrs(e.target.value)}></input>
                 </div>
                 <br></br>
 
                 <div >
                     <Link to={'./'}><Button className='btn' buttonStyle='btn-cancel' buttonSize='btn-large'>Cancel</Button></Link>
-                    <input className="submitbtn" type="submit" value="Submit" ></input>
+                     <Button className='btn' buttonStyle='btn-login' buttonSize='btn-large'onClick={function(event){
+                        CreatePatient();
+                        return window.location.href = "/";
+                    }}>Submit</Button> 
                 </div>
             </form>
             <br></br>
-
-
-
         </div>
         )
-
-    }
 }
+export default CreateAcc
 
 
 

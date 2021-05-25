@@ -1,5 +1,6 @@
 import datetime
 from flask import current_app
+from flask_marshmallow.fields import fields
 from be import db, ma
 
 #Temp table model
