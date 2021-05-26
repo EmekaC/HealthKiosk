@@ -38,18 +38,21 @@ function CreateAcc() {
     const [relationships, setRelationship] = useState([])
     const [genders, setGender] = useState([])
     const [statues, setStatus] = useState([])
+    const [state, setUse] = useState("")
 
-    async function CreatePatient(){
+
+     
+    async function CreateAccount(){
         await fetch("api/patients/create", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-              },
+            },
             body: JSON.stringify({
                 "id": patId, 
                 "name": patName, 
                 "surname": patSurname,
-                "mobile": Number(patMobile),
+                "mobile": patMobile,
                 "gender": patGender, 
                 "dob": patDOB,
                 "address": patAddress, 
@@ -60,40 +63,38 @@ function CreateAcc() {
                 "password": patPassword ,
                 "doctor": patDoc
             }),
-        }).then((response) => response.json())
-        .then((responseData) => {
-          console.log(responseData);
-          return CreateNOK();
-        })
-        .catch(error => console.warn(error));
-      
+        }).then(response => {
+            if(response.ok){
+                 fetch("/api/noks/create", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        "relationship": nokRelationship,
+                        "name": nokName,
+                        "surname": nokSurname,
+                        "mobile": nokMobile,
+                        "gender": nokGender,
+                        "address":nokAddress,
+                        "city" : nokCity,
+                        "contact_hrs" : nokContactHrs,
+                        "patientId": patId   
+                    }),
+                }).then(response => {
+                    if(response.ok){
+                        console.log("Ok")
+                        alert("Account Successfully created...Redirecting to login");
+                        window.location.href = "./";
+                    }else{
+                        response.json().then(data => console.log(data));
+                    }
+                })
+            }else{
+                response.json().then(data => console.log(data));
+            }
+        }).catch(error => console.log(error));
     }
-
-    async function CreateNOK(){
-        await fetch("api/noks/create", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-              },
-            body: JSON.stringify({
-                "relationship": nokRelationship,
-                "name": nokName,
-                "surname": nokSurname,
-                "mobile": Number(nokMobile),
-                "gender": nokGender,
-                "address": nokAddress,
-                "city" : nokCity,
-                "contact_hrs" : nokContactHrs,
-                "patientId": patId
-            }),
-        }).then((response) => response.json())
-        .then((responseData) => {
-          console.log(responseData);
-          return responseData
-        })
-        .catch(error => console.warn(error));
-    }
-
 
     async function getSelections(){
         const docs = await axios.get('api/docs')
@@ -127,18 +128,24 @@ function CreateAcc() {
         setRelationship(relationship)
         setGender(gen)
         setStatus(stat)
-    }    
+        setUse(0)
+        
+    }  
     
-    useEffect(() => {
+    useEffect(()=> {
+        console.log("Use Effect Called")
         getSelections();
-    }, []);
+    },[state])
+    
+    
+    
 
     return (
+       
         <div >
-            <p>{console.log("Patient Records: Id: %s,\n Name: %s,\n Surname: %s,\n Mobile: %s,\nGender: %s, dob: %s, Doctor: %s ",patId,patName,patSurname,patMobile,patGender,patDOB,patDoc)}</p>
             <div className='title'>New Account Creation</div>
             <br></br>
-            <form name='patient'>
+            <form name='patient' id='patient'>
                 <h1>Personal Details</h1>
                 <div className='patient'>
 
@@ -168,7 +175,7 @@ function CreateAcc() {
                     <input type="text" name="city" required value={patCity} onChange={e => setpatCity(e.target.value)}></input>
 
                     <label for="married"><b>Marital status</b></label>
-                    <Select options={statues} onChange={e => setpatStatus(e.label)} />
+                    <Select options={statues} onChange={e =>setpatStatus(e.label)}/>
 
                     <label for="siblings"><b>Siblings</b></label>
                     <div id="siblings" name="siblings">
@@ -221,19 +228,22 @@ function CreateAcc() {
                     <input type="text" name="contactHrs" value={nokContactHrs} onChange={e => setnokContactHrs(e.target.value)}></input>
                 </div>
                 <br></br>
-
+                </form>
                 <div >
                     <Link to={'./'}><Button className='btn' buttonStyle='btn-cancel' buttonSize='btn-large'>Cancel</Button></Link>
-                     <Button className='btn' buttonStyle='btn-login' buttonSize='btn-large'onClick={function(event){
-                        CreatePatient();
-                        return window.location.href = "/";
-                    }}>Submit</Button> 
+                     <Button className='btn' buttonStyle='btn-login' buttonSize='btn-large'onClick={async () => {
+                        CreateAccount().then(()=> {
+                            window.location.reload();
+                        });
+                        }}>Submit</Button> 
+                    
                 </div>
-            </form>
+            
             <br></br>
         </div>
-        )
-}
+    )
+                    }
+
 export default CreateAcc
 
 

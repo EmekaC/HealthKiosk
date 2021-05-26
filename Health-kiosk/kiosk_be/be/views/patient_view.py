@@ -1,6 +1,7 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, redirect, url_for
 from be.controllers.patients_controller import *
 from be.views.login_view import token_required
+from be.views.nok_view import createNok
 
 #register blueprint
 patients_view = Blueprint('patients_view', __name__)
@@ -60,7 +61,8 @@ def createPat():
         return jsonify({'result': error }),400
     
     if status == True:
-        return jsonify({'result': 'success'}),201
+      return jsonify({'result': 'success'}),201
+      #return redirect(url_for('next_of_ken_view.createNok'),code=307)
     else:
         return jsonify({'result': status}),422
 

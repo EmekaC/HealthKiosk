@@ -37,7 +37,7 @@ def Userlogin():
     auth = request.authorization
     
     if not auth or not auth.username or not auth.password:
-        return make_response('Could not verify', 401, {'WWW-Authenticate' : 'Basic realm="Login required!"'})
+        return make_response('Could not verify', 401)
     
     data = request.get_json()
     remember_me = data['remember-me']
@@ -46,11 +46,11 @@ def Userlogin():
     else:
         token = login(auth.username,auth.password)
 
-    if token:
+    if token != "Invalid credentials":
         return jsonify({'token' : token})
+ 
 
-
-    return make_response('Could not verify', 401, {'WWW-Authenticate' : 'Basic realm="Login required!"'})
+    return make_response('Could not verify', 401)
 
 # Patient logout
 @login_view.route('/api/logout')

@@ -19,7 +19,7 @@ function Content() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": 'Basic ' + window.btoa(id+":"+password),
+            "Authorization": 'Basic' + window.btoa(id+":"+password),
           },
           body: JSON.stringify({"remember-me": "False"}),
         }).then((response) => {
@@ -37,6 +37,7 @@ function Content() {
             window.location.href = "./measurements";
           }
           else{
+            alert("Invalid credentials");
             response.json().then(data => console.log(data.statusText));
           }
         })
