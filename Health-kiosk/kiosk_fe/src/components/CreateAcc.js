@@ -135,6 +135,7 @@ function CreateAcc() {
     useEffect(()=> {
         console.log("Use Effect Called")
         getSelections();
+
     },[state])
     
     
@@ -151,16 +152,15 @@ function CreateAcc() {
 
 
                     <label for="id"><b>ID Number</b></label>
-                    <input type="text" name="id" required value={patId} onChange={e => setPatId(e.target.value)}></input>
-
+                    <input type="text" name="id" required value={patId} onChange={e => setPatId(e.target.value)} pattern="^[0-9]{7}(M|L|G|H){1}$" title="Maltese id card format"></input>
                     <label for="name"><b>Name</b></label>
-                    <input type="text" name="name" required value={patName} onChange={e => setpatName(e.target.value)}></input>
+                    <input type="text" name="name" required value={patName} onChange={e => setpatName(e.target.value)} pattern="^[a-zA-Z ]*$" title="Only letters can be inputted for name"></input>
 
                     <label for="surname"><b>Surname</b></label>
-                    <input type="text" name="surname" required value={patSurname} onChange={e => setpatSurname(e.target.value)}></input>
+                    <input type="text" name="surname" required value={patSurname} onChange={e => setpatSurname(e.target.value)} pattern="^[a-zA-Z ]*$" title="Only letters can be inputted for name"></input>
 
                     <label for="mobile"><b>Mobile</b></label>
-                    <input type="text" name="mobile" required value={patMobile} onChange={e => setpatMobile(e.target.value)}></input>
+                    <input type="text" name="mobile" required value={patMobile} onChange={e => setpatMobile(e.target.value)} pattern="^[79|99|77]{2}[0-9]{6}$" title="Maltese 8 digit mobile numbers are accepted"></input>
 
                     <label for="gender"><b>Gender</b></label>
                     <Select options={genders} onChange={e => setpatGender(e.label)} />
@@ -169,31 +169,31 @@ function CreateAcc() {
                     <input type="date" required value={patDOB} onChange={e => setpatDOB(e.target.value)}></input>
 
                     <label for="address"><b>Address</b></label>
-                    <input type="text" name="address" required value={patAddress} onChange={e => setpatAddress(e.target.value)}></input>
+                    <input type="text" name="address" required value={patAddress} onChange={e => setpatAddress(e.target.value)} pattern="^\d+\,\s?[A-z \s\-\']+\,+\s?[A-Z]{3}\s\d{4}$" title="Accepted Address format is: building number, street, post code"></input>
 
                     <label for="city"><b>City</b></label>
-                    <input type="text" name="city" required value={patCity} onChange={e => setpatCity(e.target.value)}></input>
+                    <input type="text" name="city" required value={patCity} onChange={e => setpatCity(e.target.value)} pattern="^[A-z \-\']+\s?$" title="City"></input>
 
                     <label for="married"><b>Marital status</b></label>
                     <Select options={statues} onChange={e =>setpatStatus(e.label)}/>
 
                     <label for="siblings"><b>Siblings</b></label>
-                    <div id="siblings" name="siblings">
+                    <div id="siblings" className="radio"name="siblings" >
 
-
-                    <input type="radio" id="yes" name="siblings" value="1" onChange={e => setpatSiblings(e.target.value)}></input>
-                    <label for="yes">Yes</label><br></br>
+                    <label for="yes">Yes</label>
+                    <input type="radio" id="yes" name="siblings" value="1" onChange={e => setpatSiblings(e.target.value)} ></input><br/>
+                    <label for="no">No</label>
                     <input type="radio" id="no" name="siblings" value="0" onChange={e => setpatSiblings(e.target.value)}></input>
-                    <label for="female">no</label><br></br>
+                    
                     </div>
 
 
 
                     <label for="email"><b>Email</b></label>
-                    <input type="email" name="email" required value={patEmail} onChange={e => setpatEmail(e.target.value)}></input>
+                    <input type="email" name="email" required value={patEmail} onChange={e => setpatEmail(e.target.value)} pattern="(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)" title="Email"></input>
 
                     <label for="password"><b>Password</b></label>
-                    <input type="password" name="password" required value={patPassword} onChange={e => setpatPassword(e.target.value)}></input>
+                    <input type="password" name="password" required value={patPassword} onChange={e => setpatPassword(e.target.value)} pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,14}$" title="Password between 8-14 characters long. Must contain a Captial, number and special character."></input>
 
                     <label for="doc"><b>Doctor</b></label>
                     <Select options={doctors} onChange={e => setpatDoc(e.value)} />
@@ -207,22 +207,22 @@ function CreateAcc() {
                     
 
                     <label for="name"><b>Name</b></label>
-                    <input type="text" name="name" required value={nokName} onChange={e => setnokName(e.target.value)}></input>
+                    <input type="text" name="name" required value={nokName} onChange={e => setnokName(e.target.value)} pattern="^[a-zA-Z ]*$" title="Only letters can be inputted for name"></input>
 
                     <label for="surname"><b>Surname</b></label>
-                    <input type="text" name="surname" required value={nokSurname} onChange={e => setnokSurname(e.target.value)}></input>
+                    <input type="text" name="surname" required value={nokSurname} onChange={e => setnokSurname(e.target.value)} pattern="^[a-zA-Z ]*$" title="Only letters can be inputted for surname"></input>
 
                     <label for="mobile"><b>Mobile</b></label>
-                    <input type="tel" name="mobile" required value={nokMobile} onChange={e => setnokMobile(e.target.value)}></input>
+                    <input type="tel" name="mobile" required value={nokMobile} onChange={e => setnokMobile(e.target.value)} pattern="^[79|99|77]{2}[0-9]{6}$" title="Maltese 8 digit mobile numbers are accepted"></input>
 
                     <label for="gender"><b>Gender</b></label>
                     <Select options={genders} required onChange={e => setnokGender(e.label)} />
 
                     <label for="address"><b>Address</b></label>
-                    <input type="text" name="address" required value={nokAddress} onChange={e => setnokAddress(e.target.value)}></input>
+                    <input type="text" name="address" required value={nokAddress} onChange={e => setnokAddress(e.target.value)} pattern="^\d+\,\s?[A-z \s\-\']+\,+\s?[A-Z]{3}\s\d{4}$" title="Accepted Address format is: building number, street, post code"></input>
 
                     <label for="city"><b>City</b></label>
-                    <input type="text" name="city" required value={nokCity} onChange={e => setnokCity(e.target.value)}></input>
+                    <input type="text" name="city" required value={nokCity} onChange={e => setnokCity(e.target.value)} pattern="^[A-z \-\']+\s?$" title="City"></input>
 
                     <label for="contactHrs"><b>Contact Hours</b></label>
                     <input type="text" name="contactHrs" value={nokContactHrs} onChange={e => setnokContactHrs(e.target.value)}></input>
@@ -231,7 +231,7 @@ function CreateAcc() {
                 </form>
                 <div >
                     <Link to={'./'}><Button className='btn' buttonStyle='btn-cancel' buttonSize='btn-large'>Cancel</Button></Link>
-                     <Button className='btn' buttonStyle='btn-login' buttonSize='btn-large'onClick={async () => {
+                     <Button className='btn' buttonStyle='btn-login' buttonSize='btn-large' data-toggle="tooltip" data-placement="top" title="Tooltip on top" onClick={async () => {
                         CreateAccount().then(()=> {
                             window.location.reload();
                         });

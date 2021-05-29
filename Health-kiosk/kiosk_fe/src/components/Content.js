@@ -49,10 +49,10 @@ function Content() {
 
             <form>
                 <label for="id"><b>ID: </b></label>
-                <input type="text" name="id" required value={id} onChange={e => setID(e.target.value)}></input>
+                <input type="text" name="id" required value={id} onChange={e => setID(e.target.value)} pattern="^[0-9]{7}(M|L|G|H){1}$" title="Maltese Citizen ID card format"></input>
                 <br></br>
                 <label for="password"><b>Password: </b></label>
-                <input type="password" name="password" required value={password} onChange={e => setPassword(e.target.value)}></input>
+                <input type="password" name="password" required value={password} onChange={e => setPassword(e.target.value)} pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,14}$" title="Invalid password"></input>
             </form>
             <br></br>
             

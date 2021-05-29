@@ -62,4 +62,25 @@ h1{
 }
 
 
+.radio .label{
+  font-size: 40px;
+  
+  background-color: whitesmoke;
+    
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 20px;
+  column-gap: 10px;
+  width: 60px;
+}
+
+input[type="radio"] {
+  margin-top: 15px;
+  vertical-align: middle;
+  width: 50px;
+}
+
+
+
+
 
