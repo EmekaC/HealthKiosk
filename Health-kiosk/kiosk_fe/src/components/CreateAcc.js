@@ -106,23 +106,29 @@ function CreateAcc() {
         const gender = genders.data.genders
         const status = statuses.data.status
 
+        
+
         const doctor = doctors.map(d => ({
             "value": d.id,
             "label": "Dr. "+d.name +" "+ d.surname
 
         }))
 
-        const relationship = relationships.map(d => ({
-            "label": d
-        }))
+        const relationship = Object.entries(relationships).map(([key,value]) => ({
+            "value": key,
+            "label": value
+       }));
 
-        const gen = gender.map(d => ({
-            "label": d
-        }))
+       const gen = Object.entries(gender).map(([key,value]) => ({
+            "value": key,
+            "label": value
+       }));
+        
 
-        const stat = status.map(d => ({
-            "label": d
-        }))
+        const stat = Object.entries(status).map(([key,value]) => ({
+            "value": key,
+            "label": value
+       }));
 
         setDoctor(doctor)
         setRelationship(relationship)
