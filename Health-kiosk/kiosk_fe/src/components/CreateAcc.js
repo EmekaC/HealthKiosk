@@ -238,9 +238,7 @@ function CreateAcc() {
                 <div >
                     <Link to={'./'}><Button className='btn' buttonStyle='btn-cancel' buttonSize='btn-large'>Cancel</Button></Link>
                      <Button className='btn' buttonStyle='btn-login' buttonSize='btn-large' data-toggle="tooltip" data-placement="top" title="Tooltip on top" onClick={async () => {
-                        CreateAccount().then(()=> {
-                            window.location.reload();
-                        });
+                        CreateAccount();
                         }}>Submit</Button> 
                     
                 </div>

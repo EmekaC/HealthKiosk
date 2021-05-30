@@ -19,7 +19,7 @@ function Content() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": 'Basic' + window.btoa(id+":"+password),
+            'Authorization': 'Basic ' + btoa(`${id}:${password}`)
           },
           body: JSON.stringify({"remember-me": "False"}),
         }).then((response) => {
