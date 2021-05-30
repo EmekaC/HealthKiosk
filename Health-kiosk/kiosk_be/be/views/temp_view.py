@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from be.controllers.temperature_controller import *
-from be.controllers.test_tempreture_controller import *
+
 
 
 #register blueprint
@@ -11,19 +11,19 @@ temp_view = Blueprint('temp_views', __name__)
 #Get all stored sensor data
 @temp_view.route("/api/temp",methods=["GET"])
 def getCurrentResults():
-    results = getTestData()
+    results = getData()
     return  jsonify({'results': results})
 
 #start sensor reading
 @temp_view.route("/api/temp/start",methods=["GET"])
 def starting():
-    state = startTestTempreture()
+    state = startTempreture()
     return jsonify({'results': state})
 
 #delete sensor data
 @temp_view.route("/api/temp/del",methods=["DELETE"])
 def deleting():
-    state = deleteTestData()
+    state = deleteData()
     return jsonify({'Status': state})
 
 

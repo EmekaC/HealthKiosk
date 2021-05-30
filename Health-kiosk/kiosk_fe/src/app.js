@@ -17,7 +17,6 @@ function app() {
                  <Route path="/signUp" component={SignUp} />
                  <Route path="/measurements" component={Measurements} />
                  <Route path="/finished" component={Exit} />
-                 <Route path="/pats" component={GetPatients} />
              </Switch>
         </Router>
         

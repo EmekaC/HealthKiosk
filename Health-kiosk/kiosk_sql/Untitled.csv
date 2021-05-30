@@ -1,0 +1,3 @@
+"id";"active";"name";"surname";"mobile";"gender";"dob";"address";"city";"marital_status";"siblings";"email";"password";"deceased";"deceased_date";"photo";"general_practitioner";"managed_organization";"communitcation"
+"0485800L";1;"Samira";"Cachia";79201812;"Female";"2021-05-04";"131, Triq tal-Franciz, SWQ 2136";"Swieqi";"Single";1;"s.cachiaspiteri@gmail.com";"pbkdf2:sha256:150000$H9QrhEfn$cfd633b3b0ab87a3470fa1d98adcff3ee961b4fa6bd85c531a6816ddb501d733";0;"";"";1;"";"English"
+"0485801L";1;"Ish";"Cachia";77186187;"Male";"2021-05-19";"131, Triq tal-Franciz, SWQ 2136";"Swieqi";"Single";1;"ish.cachiaspiteri@gmail.com";"pbkdf2:sha256:150000$Etn7dmqN$f2d82600c1a33ccc79866af8fc47eff5a1e02f6db79aa755e1b726c50ebe0772";0;"";"";1;"";"English"

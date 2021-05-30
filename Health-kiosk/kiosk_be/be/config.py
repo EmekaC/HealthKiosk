@@ -4,7 +4,7 @@ import secrets
 #Database specifications
 dbhost = 'localhost'
 dbuser = 'root'
-dbpass = 'samish1802'
+dbpass = 'kiosk@DB1'
 dbname = 'health-kiosk'
 
 connection = f'mysql+pymysql://{dbuser}:{dbpass}@{dbhost}/{dbname}'

@@ -1,4 +1,4 @@
-=CREATE TABLE `patients` (
+CREATE TABLE `patients` (
   `id` varchar(8) NOT NULL,
   `active` tinyint NOT NULL DEFAULT '1',
   `name` varchar(45) NOT NULL,
