@@ -5,7 +5,6 @@ import Home from './components/Pages/Home';
 import SignUp from './components/Pages/SignUp';
 import Measurements from './components/Pages/Measurements';
 import Exit from './components/Pages/Exit';
-import GetPatients from './components/Pages/GetPatients'
 
 
 function app() {
