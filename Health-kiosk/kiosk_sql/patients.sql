@@ -1,4 +1,4 @@
-CREATE TABLE `health-kiosk`.`patients` (
+=CREATE TABLE `patients` (
   `id` varchar(8) NOT NULL,
   `active` tinyint NOT NULL DEFAULT '1',
   `name` varchar(45) NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE `health-kiosk`.`patients` (
   `marital_status` enum('Single','Married','Domestic Partnership','Divorced') NOT NULL,
   `siblings` tinyint NOT NULL DEFAULT '0',
   `email` varchar(120) NOT NULL,
-  `password` varchar(14) NOT NULL,
+  `password` varchar(200) NOT NULL,
   `deceased` tinyint NOT NULL DEFAULT '0',
   `deceased_date` datetime DEFAULT NULL,
   `photo` longblob,

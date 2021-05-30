@@ -10,4 +10,4 @@ CREATE TABLE `results` (
   PRIMARY KEY (`resultNo`),
   KEY `patientID_idx` (`patientId`),
   CONSTRAINT `patientId` FOREIGN KEY (`patientId`) REFERENCES `patients` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=ascii;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=ascii;

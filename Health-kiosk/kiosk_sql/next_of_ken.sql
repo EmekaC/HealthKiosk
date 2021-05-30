@@ -1,4 +1,4 @@
-CREATE TABLE `health-kiosk`.`nextofken` (
+CREATE TABLE `nextofken` (
   `id` int NOT NULL AUTO_INCREMENT,
   `relationship` enum('Mother','Father','Parent','Brother','Sister','Son','Daughter','Child','Friend','Spouse','Partner','Family member','Carer','Social worker','Guardian','Other') NOT NULL,
   `patient_id` varchar(8) NOT NULL,
@@ -14,5 +14,4 @@ CREATE TABLE `health-kiosk`.`nextofken` (
   UNIQUE KEY `patient_id_UNIQUE` (`patient_id`),
   UNIQUE KEY `mobile_UNIQUE` (`mobile`),
   CONSTRAINT `patient_id` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=ascii;
-
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=ascii;
